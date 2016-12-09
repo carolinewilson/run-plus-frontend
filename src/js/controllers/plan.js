@@ -51,6 +51,4 @@ function PlansShowController(UserPlan, $state) {
     plansShow.completedMiles = Math.floor(plansShow.completedMiles);
 
   });
-
-
 }

@@ -9,16 +9,18 @@
       <li>{{ plansShow.completedMiles }} / {{ plansShow.totalMiles }} miles</li>
     </ul>
   </div>
-  {{ plansShow.plan}}
-  <ul>
-    <li ng-repeat="day in plansShow.plan.user_days">
-      <p>{{ day.date | date: DD }}</p>
-      <p>Week: {{ day.week }}</p>
-      <p>Day: {{ day.position }}</p>
-      <p ng-if="day.exercise.name">Exercise: {{ day.exercise.name }}</p>
-      <p ng-if="!day.exercise.name">Exercise: Rest day</p>
-
-    </li>
-  </ul>
-
+  <div class="">
+    <h3><a>This week</a></h3>
+  </div>
+  <div class="">
+    <h3>{ INSERT CHART HERE }</h3>
+  </div>
+  <div class="">
+    <a ui-sref="daysIndex({id: plansShow.plan.id})">
+      <h3>View full plan</h3>
+    </a>
+  </div>
+  <div class="">
+    <h3><a>End plan</a></h3>
+  </div>
 </section>
