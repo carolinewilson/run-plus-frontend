@@ -1,0 +1,24 @@
+<section>
+  <div>
+    <h1>{{ plansShow.plan.name }}</h1>
+    <h2>{{ plansShow.plan.end_date | date: dd }}</h2>
+  </div>
+  <div>
+    <ul>
+      <li>{{ plansShow.completedWorkouts }} / {{ plansShow.totalWorkouts }} workouts</li>
+      <li>{{ plansShow.completedMiles }} / {{ plansShow.totalMiles }} miles</li>
+    </ul>
+  </div>
+  {{ plansShow.plan}}
+  <ul>
+    <li ng-repeat="day in plansShow.plan.user_days">
+      <p>{{ day.date | date: DD }}</p>
+      <p>Week: {{ day.week }}</p>
+      <p>Day: {{ day.position }}</p>
+      <p ng-if="day.exercise.name">Exercise: {{ day.exercise.name }}</p>
+      <p ng-if="!day.exercise.name">Exercise: Rest day</p>
+
+    </li>
+  </ul>
+
+</section>

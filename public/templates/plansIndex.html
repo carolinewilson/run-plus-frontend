@@ -1,0 +1,16 @@
+<section>
+  <h1>Plans Index</h1>
+  <ul>
+    <li ng-repeat="user in plansIndex.all">
+      <div ng-if="user.id === plansIndex.currentUser">
+        <ul>
+          <li ng-repeat="plan in user.user_plans">
+            <h2>{{ plan.name }}</h2>
+            <p>{{ plan.end_date }}</p>
+            <a ui-sref="plansShow({id: plan.id })">Show</a>
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</section>

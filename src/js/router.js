@@ -14,10 +14,15 @@ function Router($stateProvider, $urlRouterProvider) {
       templateUrl: '/templates/setup.html',
       controller: 'SetupController as setupPlan'
     })
-    .state('plan', {
-      url: '/plan',
-      templateUrl: '/templates/plan.html',
-      controller: 'PlanController as plan'
+    .state('plansIndex', {
+      url: '/plans',
+      templateUrl: '/templates/plansIndex.html',
+      controller: 'PlansIndexController as plansIndex'
+    })
+    .state('plansShow', {
+      url: '/plans/:id',
+      templateUrl: '/templates/plansShow.html',
+      controller: 'PlansShowController as plansShow'
     })
     .state('usersIndex', {
       url: '/users',
