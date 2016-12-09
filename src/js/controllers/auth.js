@@ -11,7 +11,7 @@ function RegisterController($auth, $state) {
   function submit() {
     $auth.signup(register.user)
       .then(() => {
-        $state.go('planSetup');
+        $state.go('setup');
       });
   }
 
@@ -27,7 +27,7 @@ function LoginController($auth, $state) {
   function submit() {
     $auth.login(login.credentials)
       .then(() => {
-        $state.go('planSetup');
+        $state.go('setup');
       });
   }
 

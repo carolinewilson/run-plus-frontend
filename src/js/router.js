@@ -9,10 +9,15 @@ function Router($stateProvider, $urlRouterProvider) {
       templateUrl: '/templates/homepage.html',
       controller: 'MainController as main'
     })
-    .state('planSetup', {
+    .state('setup', {
+      url: '/setup',
+      templateUrl: '/templates/setup.html',
+      controller: 'SetupController as setupPlan'
+    })
+    .state('plan', {
       url: '/plan',
-      templateUrl: '/templates/planSetup.html',
-      controller: 'PlanSetupController as planSetup'
+      templateUrl: '/templates/plan.html',
+      controller: 'PlanController as plan'
     })
     .state('usersIndex', {
       url: '/users',
