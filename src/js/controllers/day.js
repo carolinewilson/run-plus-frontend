@@ -19,7 +19,8 @@ function DaysShowController(Day, $state) {
   daysShow.day = Day.get({ id: daysShow.dayId });
 
   function markDone(){
-    console.log('clicked');
+    daysShow.day.completed = true;
+    Day.update(daysShow.dayId, daysShow.day);
   }
 
   daysShow.markDone = markDone;
