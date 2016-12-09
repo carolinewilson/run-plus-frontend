@@ -1,0 +1,19 @@
+<section>
+  <header>
+    <ul>
+      <li><a ui-sref="plansShow({ id: weeksShow.planId})"><</a></li>
+      <li>WEEK 2</li>
+      <li>EDIT</li>
+    </ul>
+  </header>
+  <h1>Week Show</h1>
+  <ul>
+    <li ng-repeat="day in weeksShow.thisWeek" ng-class="{ 'complete' : day.completed }">
+      <p>{{ day.date | date: dd }}</p>
+      <a ui-sref="daysShow({planId: weeksShow.planId, dayId: day.id})" ng-if="day.exercise.name">{{ day.exercise.name }}</a>
+      <a ng-if="!day.exercise.name">Rest day</a>
+      <hr>
+    </li>
+  </ul>
+
+</section>

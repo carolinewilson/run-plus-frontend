@@ -6,8 +6,7 @@ DaysIndexController.$inject = ['UserPlan', '$state'];
 function DaysIndexController(UserPlan, $state) {
   const daysIndex = this;
 
-  daysIndex.plan = UserPlan.get($state.params, () => {
-  });
+  daysIndex.plan = UserPlan.get($state.params);
 }
 
 DaysShowController.$inject = ['Day', '$state'];

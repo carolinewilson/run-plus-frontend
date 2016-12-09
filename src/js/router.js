@@ -24,6 +24,11 @@ function Router($stateProvider, $urlRouterProvider) {
       templateUrl: '/templates/plansShow.html',
       controller: 'PlansShowController as plansShow'
     })
+    .state('weeksShow', {
+      url: '/plans/:planId/weeks/:weekId',
+      templateUrl: '/templates/weeksShow.html',
+      controller: 'WeeksShowController as weeksShow'
+    })
     .state('daysIndex', {
       url: '/plans/:id/days',
       templateUrl: '/templates/daysIndex.html',

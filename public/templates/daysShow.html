@@ -1,15 +1,14 @@
 <section>
   <header>
     <ul>
-      <li><a ui-sref="daysIndex({id: daysShow.planId})"><</a></li>
+      <li><a ui-sref="plansShow({id: daysShow.planId})"><</a></li>
       <li>{{ daysShow.day.date | date: dd }}</li>
     </ul>
   </header>
   <div class="">
     <h3>{{ daysShow.day.exercise.name }}</h3>
     <h1>{{ daysShow.day.exercise.miles }} miles</h1>
-    <button ng-click="daysShow.markDone()">Completed</button>
+    <button ng-if="daysShow.day.completed" disabled="true" class="disabled">Complete</button>
+    <button ng-if="!daysShow.day.completed" ng-click="daysShow.markDone()">Completed</button>
   </div>
-
-
 </section>

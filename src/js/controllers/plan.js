@@ -18,30 +18,27 @@ function PlansShowController(UserPlan, $state) {
   plansShow.plan = UserPlan.get($state.params, () => {
 
     plansShow.totalWorkouts = 0;
+    plansShow.totalMiles = 0;
     plansShow.completedWorkouts = 0;
+    plansShow.completedMiles = 0;
 
     plansShow.plan.user_days.forEach((day) => {
+      // Find current week
+
+      const date =  moment(day.date).format('YYYY-MM-DD');
+      const today = moment().format('YYYY-MM-DD');
+      if (date === today) {
+        plansShow.currentWeek = day.week;
+      }
+
       // Calculate total number of workout days
       if (day.exercise) {
         plansShow.totalWorkouts += 1;
+        plansShow.totalMiles += day.exercise.miles;
 
         // Calculate num completed workouts
         if (day.completed) {
           plansShow.completedWorkouts += 1;
-        }
-      }
-    });
-
-    // Calculate total milage of plan
-    plansShow.totalMiles = 0;
-    plansShow.completedMiles = 0;
-
-    plansShow.plan.user_days.forEach((day) => {
-      if (day.exercise) {
-        plansShow.totalMiles += day.exercise.miles;
-
-        // Calculate num completed miles
-        if (day.completed) {
           plansShow.completedMiles += day.exercise.miles;
         }
       }
