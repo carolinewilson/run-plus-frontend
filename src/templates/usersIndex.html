@@ -1,0 +1,10 @@
+<section>
+  <h1>Users Show</h1>
+  <ul>
+    <li ng-repeat="user in usersIndex.all">
+      <h2>{{ user.username }}</h2>
+      <h4>{{ user.email }}</h4>
+      <a ui-sref="usersShow({id: user.id })">Show</a>
+    </li>
+  </ul>
+</section>
