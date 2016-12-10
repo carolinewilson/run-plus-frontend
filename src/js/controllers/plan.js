@@ -11,9 +11,10 @@ function PlansIndexController(User, $auth) {
   plansIndex.all = User.query();
 }
 
-PlansShowController.$inject = ['UserPlan' ,'$state'];
-function PlansShowController(UserPlan, $state) {
+PlansShowController.$inject = ['UserPlan' ,'$state','$window'];
+function PlansShowController(UserPlan, $state, $window) {
   const plansShow = this;
+  const moment = $window.moment;
 
   plansShow.plan = UserPlan.get($state.params, () => {
 
@@ -24,7 +25,6 @@ function PlansShowController(UserPlan, $state) {
 
     plansShow.plan.user_days.forEach((day) => {
       // Find current week
-
       const date =  moment(day.date).format('YYYY-MM-DD');
       const today = moment().format('YYYY-MM-DD');
       if (date === today) {
@@ -46,6 +46,14 @@ function PlansShowController(UserPlan, $state) {
 
     plansShow.totalMiles = Math.floor(plansShow.totalMiles);
     plansShow.completedMiles = Math.floor(plansShow.completedMiles);
+
+    plansShow.labels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+    plansShow.series = ['Series A', 'Series B'];
+
+    plansShow.data = [
+      [65, 59, 80, 81, 56, 55, 40],
+      [28, 48, 40, 19, 86, 27, 90]
+    ];
 
   });
 }

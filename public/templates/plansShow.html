@@ -13,7 +13,9 @@
     <h3><a ui-sref="weeksShow({planId: plansShow.plan.id, weekId: plansShow.currentWeek})">This week</a></h3>
   </div>
   <div class="">
-    <h3>{ INSERT CHART HERE }</h3>
+    <canvas id="bar" class="chart chart-bar"
+      chart-data="plansShow.data" chart-labels="plansShow.labels" chart-series="plansShow.series">
+    </canvas>
   </div>
   <div class="">
     <a ui-sref="daysIndex({id: plansShow.plan.id})">
