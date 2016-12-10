@@ -1,5 +1,6 @@
 angular.module('finalProject')
-  .controller('WeeksShowController', WeeksShowController);
+  .controller('WeeksShowController', WeeksShowController)
+  .controller('WeeksEditController', WeeksEditController);
 
 WeeksShowController.$inject = ['UserPlan', '$state'];
 function WeeksShowController(UserPlan, $state) {
@@ -14,6 +15,24 @@ function WeeksShowController(UserPlan, $state) {
     weeksShow.plan.user_days.forEach((day) => {
       if (day.week == weeksShow.weekId) {
         weeksShow.thisWeek.push(day);
+      }
+    });
+  });
+}
+
+WeeksEditController.$inject = ['UserPlan', '$state'];
+function WeeksEditController(UserPlan, $state) {
+  const weeksEdit = this;
+
+  weeksEdit.planId = $state.params.planId;
+  weeksEdit.weekId = $state.params.weekId;
+
+  weeksEdit.plan = UserPlan.get({ id: weeksEdit.planId }, () => {
+    weeksEdit.thisWeek = [];
+
+    weeksEdit.plan.user_days.forEach((day) => {
+      if (day.week == weeksEdit.weekId) {
+        weeksEdit.thisWeek.push(day);
       }
     });
   });

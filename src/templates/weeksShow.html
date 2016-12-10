@@ -3,7 +3,7 @@
     <ul>
       <li><a ui-sref="plansShow({ id: weeksShow.planId})"><</a></li>
       <li>WEEK {{ weeksShow.weekId }}</li>
-      <li>EDIT</li>
+      <li><a ui-sref="weeksEdit({ planId: weeksShow.planId, weekId: weeksShow.weekId})">EDIT</a></li>
     </ul>
   </header>
   <h1>Week Show</h1>
@@ -15,5 +15,4 @@
       <hr>
     </li>
   </ul>
-
 </section>

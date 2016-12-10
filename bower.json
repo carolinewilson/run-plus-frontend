@@ -20,6 +20,9 @@
     "angular-ui-router": "^0.3.2",
     "satellizer": "^0.15.5",
     "skeleton": "^2.0.4",
-    "moment": "^2.17.1"
+    "moment": "^2.17.1",
+    "angular-chart.js": "^1.1.1",
+    "drag-drop-webkit-mobile": "ios-html5-drag-drop-shim#^1.2.0",
+    "angular-drag-and-drop-lists": "^1.4.0"
   }
 }
