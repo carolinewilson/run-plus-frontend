@@ -1,20 +1,21 @@
 <section>
   <header>
     <ul>
-      <li><a ui-sref="plansShow({ id: weeksEdit.planId})"><</a></li>
+      <li><a ng-click="weeksEdit.savePlan()" ui-sref="weeksShow({planId: weeksEdit.planId, weekId: weeksEdit.weekId})"><</a></li>
       <li>WEEK {{ weeksEdit.weekId }}</li>
-      <li><a ui-sref="weeksShow({id: weeksEdit.planId})">DONE</a></li>
+      <li><a ng-click="weeksEdit.savePlan()" ui-sref="weeksShow({planId: weeksEdit.planId, weekId: weeksEdit.weekId})">DONE</a></li>
     </ul>
   </header>
   <h1>Week Edit</h1>
   <ul dnd-list="weeksEdit.thisWeek">
-    <li ng-repeat="day in weeksEdit.thisWeek" dnd-draggable="day" dnd-moved="weeksEdit.thisWeek.splice($index, 1)"
+    <li ng-repeat="day in weeksEdit.thisWeek" dnd-draggable="day" dnd-moved="weeksEdit.updatePosition($index)"
     dnd-effect-allowed="move"
     dnd-selected="weeksEdit.selected = day"
     ng-class="{'selected': weeksEdit.selected === day}">
       <p>{{ day.date | date: dd }}</p>
       <a ui-sref="daysShow({planId: weeksEdit.planId, dayId: day.id})" ng-if="day.exercise.name">{{ day.exercise.name }}</a>
       <a ng-if="!day.exercise.name">Rest day</a>
+      <img src="https://cdn0.iconfinder.com/data/icons/slim-square-icons-basics/100/basics-12-128.png" class="edit" >
     </li>
   </ul>
 </section>

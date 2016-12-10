@@ -7,12 +7,12 @@
     </ul>
   </header>
   <h1>Week Show</h1>
-  <ul>
+  <ul dnd-list>
     <li ng-repeat="day in weeksShow.thisWeek" ng-class="{ 'complete' : day.completed }">
       <p>{{ day.date | date: dd }}</p>
       <a ui-sref="daysShow({planId: weeksShow.planId, dayId: day.id})" ng-if="day.exercise.name">{{ day.exercise.name }}</a>
       <a ng-if="!day.exercise.name">Rest day</a>
-      <hr>
+      <a ui-sref="daysShow({planId: weeksShow.planId, dayId: day.id})" ng-if="day.exercise.name"><img ng-if="day.exercise.name" src="http://iconshow.me/media/images/ui/slim-square-icons/png/128/arrow-6.png" class="right-arrow"></a>
     </li>
   </ul>
 </section>

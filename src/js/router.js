@@ -30,7 +30,7 @@ function Router($stateProvider, $urlRouterProvider) {
       controller: 'WeeksShowController as weeksShow'
     })
     .state('weeksEdit', {
-      url: '/plans/:planId/weeks/:weekId',
+      url: '/plans/:planId/weeks/:weekId/edit',
       templateUrl: '/templates/weeksEdit.html',
       controller: 'WeeksEditController as weeksEdit'
     })
@@ -70,5 +70,5 @@ function Router($stateProvider, $urlRouterProvider) {
       controller: 'LoginController as login'
     });
 
-  $urlRouterProvider.otherwise('/users');
+  $urlRouterProvider.otherwise('/');
 }

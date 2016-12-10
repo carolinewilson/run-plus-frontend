@@ -4,6 +4,14 @@ body {
     li {
       display: inline;
       margin: 0 20px;
+
+      .edit, .right-arrow{
+        width: 50px;
+        position: absolute;
+        top: 20%;
+        right: 30px;
+      }
+
     }
   }
   a {
@@ -16,6 +24,18 @@ body {
 
   .disabled {
     background-color: lightgrey;
+  }
+
+  .homepage {
+    background-image: url('https://www.fashercise.com/wp-content/uploads/2013/06/nike-athelete-woman-running-sport-wallpapers.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right;
+    height: 100vh;
+
+    text-align: center;
+    color: white;
+    text-transform: uppercase;
   }
 }
 
