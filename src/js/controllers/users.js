@@ -10,8 +10,8 @@ function UsersIndexController(User) {
   usersIndex.all = User.query();
 }
 
-UsersShowController.$inject = ['User', '$state'];
-function UsersShowController(User, $state) {
+UsersShowController.$inject = ['User', '$state','$auth'];
+function UsersShowController(User, $state, $auth) {
   const usersShow = this;
   usersShow.user = User.get($state.params);
 
@@ -20,6 +20,15 @@ function UsersShowController(User, $state) {
       $state.go('usersIndex');
     });
   }
+
+  function logout() {
+    $auth.logout()
+      .then(() => {
+        $state.go('homepage');
+      });
+  }
+
+  usersShow.logout = logout;
   usersShow.delete = userDelete;
 }
 

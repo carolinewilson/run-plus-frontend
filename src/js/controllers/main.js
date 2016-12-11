@@ -10,7 +10,7 @@ function MainController($auth, $state){
   if (main.isLoggedIn()) {
     main.currentUser = $auth.getPayload().id;
   }
-
+  
   function logout() {
     $auth.logout()
       .then(() => {
