@@ -3,7 +3,7 @@
     <ul>
       <li>
         <a ui-sref="plansShow({ id: weeksShow.planId})">
-          <img src="http://iconshow.me/media/images/ui/slim-square-icons/png/128/arrow-5.png" class="left-arrow">
+          <img src="../images/arrow-left.png" class="left-arrow">
         </a>
       </li>
       <li>WEEK {{ weeksShow.weekId }}</li>
@@ -22,7 +22,7 @@
       <p>{{ day.date | date: dd }}</p>
       <a ui-sref="daysShow({planId: weeksShow.planId, dayId: day.id})" ng-if="day.exercise.name">{{ day.exercise.name }}</a>
       <a ng-if="!day.exercise.name">Rest day</a>
-      <a ui-sref="daysShow({planId: weeksShow.planId, dayId: day.id})" ng-if="day.exercise.name"><img ng-if="day.exercise.name" src="http://iconshow.me/media/images/ui/slim-square-icons/png/128/arrow-6.png" class="right-arrow"></a>
+      <a ui-sref="daysShow({planId: weeksShow.planId, dayId: day.id})" ng-if="day.exercise.name"><img ng-if="day.exercise.name" src="../images/arrow-right.png" class="right-arrow"></a>
     </li>
   </ul>
 </section>

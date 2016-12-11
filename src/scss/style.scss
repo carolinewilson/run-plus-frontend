@@ -1,4 +1,5 @@
 body {
+  bottom: 100px;
   ul {
     list-style: none;
     li {
@@ -17,11 +18,24 @@ body {
         top: 10px;
         left: 10px;
       }
-
     }
   }
   a {
     text-decoration: none;
+  }
+
+  nav {
+    position: fixed;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+    text-align: center;
+    background-color: white;
+    box-shadow: 0 3px 7px 5px lightgrey;
+    text-transform: uppercase;
+    ul {
+      margin: 10px 0;
+    }
   }
 
   .complete {
@@ -33,10 +47,10 @@ body {
   }
 
   .homepage {
-    background-image: url('https://www.fashercise.com/wp-content/uploads/2013/06/nike-athelete-woman-running-sport-wallpapers.jpg');
+    background-image: url('../images/hero.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: right;
+    background-position: center;
     height: 100vh;
 
     text-align: center;
