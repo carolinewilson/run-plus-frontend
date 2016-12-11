@@ -11,13 +11,23 @@
   </div>
   <div >
     <ul dnd-list>
-      <li>
+      <li ng-if="plansShow.plan.status === 'current'">
         <a ui-sref="weeksShow({planId: plansShow.plan.id, weekId: plansShow.currentWeek})">
           <h3>
               This week
           </h3>
           <img src="http://iconshow.me/media/images/ui/slim-square-icons/png/128/arrow-6.png" class="right-arrow">
         </a>
+      </li>
+      <li ng-if="plansShow.plan.status === 'future'">
+        <h3>
+            Plan not started yet
+        </h3>
+      </li>
+      <li ng-if="plansShow.plan.status === 'past'">
+        <h3>
+            Plan finished
+        </h3>
       </li>
     </ul>
   </div>

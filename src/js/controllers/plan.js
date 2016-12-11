@@ -7,8 +7,7 @@ function PlansIndexController(User, $auth) {
   const plansIndex = this;
 
   plansIndex.currentUser = $auth.getPayload().id;
-
-  plansIndex.all = User.query();
+  plansIndex.all = User.get({id: plansIndex.currentUser});
 }
 
 PlansShowController.$inject = ['UserPlan' ,'$state','$window'];
