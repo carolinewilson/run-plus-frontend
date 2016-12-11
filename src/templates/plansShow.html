@@ -9,20 +9,41 @@
       <li>{{ plansShow.completedMiles }} / {{ plansShow.totalMiles }} miles</li>
     </ul>
   </div>
-  <div class="">
-    <h3><a ui-sref="weeksShow({planId: plansShow.plan.id, weekId: plansShow.currentWeek})">This week</a></h3>
+  <div >
+    <ul dnd-list>
+      <li>
+        <a ui-sref="weeksShow({planId: plansShow.plan.id, weekId: plansShow.currentWeek})">
+          <h3>
+              This week
+          </h3>
+          <img src="http://iconshow.me/media/images/ui/slim-square-icons/png/128/arrow-6.png" class="right-arrow">
+        </a>
+      </li>
+    </ul>
   </div>
-  <div class="">
+  <div>
     <canvas id="bar" class="chart chart-bar"
       chart-data="plansShow.data" chart-labels="plansShow.labels" chart-series="plansShow.series">
     </canvas>
   </div>
-  <div class="">
-    <a ui-sref="daysIndex({id: plansShow.plan.id})">
-      <h3>View full plan</h3>
-    </a>
+  <div>
+    <ul dnd-list>
+      <li>
+        <a ui-sref="daysIndex({id: plansShow.plan.id})">
+          <h3>View full plan</h3>
+          <img src="http://iconshow.me/media/images/ui/slim-square-icons/png/128/arrow-6.png" class="right-arrow">
+        </a>
+      </li>
+    </ul>
   </div>
-  <div class="">
-    <h3><a>End plan</a></h3>
+  <div>
+    <ul dnd-list>
+      <li>
+        <a ui-sref="daysIndex({id: plansShow.plan.id})">
+          <h3>End plan</h3>
+          <img src="http://iconshow.me/media/images/ui/slim-square-icons/png/128/arrow-6.png" class="right-arrow">
+        </a>
+      </li>
+    </ul>
   </div>
 </section>

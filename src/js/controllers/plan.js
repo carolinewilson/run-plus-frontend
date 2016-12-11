@@ -48,7 +48,7 @@ function PlansShowController(UserPlan, $state, $window) {
     plansShow.completedMiles = Math.floor(plansShow.completedMiles);
 
     plansShow.labels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
-    plansShow.series = ['Series A', 'Series B'];
+    plansShow.series = ['Plan', 'Actual'];
 
     plansShow.data = [
       [65, 59, 80, 81, 56, 55, 40],

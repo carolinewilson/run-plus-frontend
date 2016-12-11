@@ -7,7 +7,7 @@ function SetupController(UserPlan, $state) {
 
   function create(){
     UserPlan.save(setupPlan, () => {
-      $state.go('plan');
+      $state.go('plansIndex');
     });
   }
 

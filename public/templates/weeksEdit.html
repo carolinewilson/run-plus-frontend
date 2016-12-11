@@ -1,7 +1,11 @@
 <section>
   <header>
     <ul>
-      <li><a ng-click="weeksEdit.savePlan()" ui-sref="weeksShow({planId: weeksEdit.planId, weekId: weeksEdit.weekId})"><</a></li>
+      <li>
+        <a ng-click="weeksEdit.savePlan()" ui-sref="weeksShow({planId: weeksEdit.planId, weekId: weeksEdit.weekId})">
+          <img src="http://iconshow.me/media/images/ui/slim-square-icons/png/128/arrow-5.png" class="left-arrow">
+        </a>
+      </li>
       <li>WEEK {{ weeksEdit.weekId }}</li>
       <li><a ng-click="weeksEdit.savePlan()" ui-sref="weeksShow({planId: weeksEdit.planId, weekId: weeksEdit.weekId})">DONE</a></li>
     </ul>

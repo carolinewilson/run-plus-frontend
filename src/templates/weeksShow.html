@@ -1,7 +1,11 @@
 <section>
   <header>
     <ul>
-      <li><a ui-sref="plansShow({ id: weeksShow.planId})"><</a></li>
+      <li>
+        <a ui-sref="plansShow({ id: weeksShow.planId})">
+          <img src="http://iconshow.me/media/images/ui/slim-square-icons/png/128/arrow-5.png" class="left-arrow">
+        </a>
+      </li>
       <li>WEEK {{ weeksShow.weekId }}</li>
       <li><a ui-sref="weeksEdit({ planId: weeksShow.planId, weekId: weeksShow.weekId})">EDIT</a></li>
     </ul>
