@@ -11,6 +11,12 @@
     </ul>
   </header>
   <h1>Week Show</h1>
+  <div>
+    <ul>
+      <li>{{ weeksShow.completedWorkouts }} / {{ weeksShow.totalWorkouts }} workouts</li>
+      <li>{{ weeksShow.completedMiles }} / {{ weeksShow.totalMiles }} miles</li>
+    </ul>
+  </div>
   <ul dnd-list>
     <li ng-repeat="day in weeksShow.thisWeek" ng-class="{ 'complete' : day.completed }">
       <p>{{ day.date | date: dd }}</p>

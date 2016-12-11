@@ -25,8 +25,9 @@ function PlansShowController(UserPlan, $state, $window) {
     plansShow.series = ['Target', 'Actual'];
     plansShow.targetData = [];
     plansShow.actualData =[];
+    plansShow.colors = ['#45b7cd', '#ff6384'];
 
-    // Set up chart labels
+    // Set up chart
     const numWeeks = plansShow.plan.user_days.length / 7;
     for (var i = 0; i < numWeeks; i++) {
       plansShow.labels.push(`Week ${i+1}`);
