@@ -23,11 +23,22 @@ function LoginController($auth, $state) {
   const login = this;
 
   login.credentials = {};
+  login.activePlans = false;
 
   function submit() {
     $auth.login(login.credentials)
-      .then(() => {
-        $state.go('setup');
+      .then((res) => {
+        res.data.user.user_plans.forEach((plan) => {
+          if (plan.active) {
+            login.activePlans = true;
+          }
+        });
+
+        if (login.activePlans) {
+          $state.go('plansIndex');
+        } else {
+          $state.go('setup');
+        }
       });
   }
 

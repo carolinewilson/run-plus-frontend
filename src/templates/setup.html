@@ -30,9 +30,18 @@
 
     <div>
       <h2>Race Date</h2>
-      <input type="text" ng-model="setupPlan.name" name="name" placeholder="Race name (optional)">
       <p>You need 6 weeks min. to train</p>
       <input type="date" name="end_date" ng-model="setupPlan.end_date">
+
+      <md-content layout-padding>
+        <div layout-gt-xs="row">
+          <div flex-gt-xs>
+            <md-datepicker ng-model="myDate" md-placeholder="Select date" ></md-datepicker>
+          </div>
+        </div>
+      </md-content>
+
+      <input type="text" ng-model="setupPlan.name" name="name" placeholder="Race name (optional)">
     </div>
 
     <div>

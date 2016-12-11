@@ -15,7 +15,6 @@ function WeeksShowController(UserPlan, $state) {
 
   UserPlan.get({ id: weeksShow.planId, week: weeksShow.weekId}, (week) => {
     weeksShow.thisWeek = week.user_days;
-    // console.log(weeksShow.thisWeek);
 
     weeksShow.thisWeek.forEach((day) => {
       if (day.exercise) {

@@ -1,4 +1,4 @@
-angular.module('finalProject', ['ngResource', 'ui.router', 'satellizer','chart.js','dndLists'])
+angular.module('finalProject', ['ngResource', 'ui.router', 'satellizer','chart.js','dndLists','ngMessages','ngMaterial'])
   .constant('API_URL', 'http://localhost:3000/api')
   .config(Auth);
 

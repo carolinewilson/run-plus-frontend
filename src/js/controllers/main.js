@@ -7,11 +7,14 @@ function MainController($auth, $state){
 
   main.isLoggedIn = $auth.isAuthenticated;
 
+  if (main.isLoggedIn()) {
+    main.currentUser = $auth.getPayload().id;
+  }
+
   function logout() {
     $auth.logout()
       .then(() => {
-        // $window.localStorage.removeItem('token');
-        $state.go('login');
+        $state.go('homepage');
       });
   }
   main.logout = logout;
