@@ -21,6 +21,34 @@ function PlansShowController(UserPlan, $state, $window) {
     plansShow.totalMiles = 0;
     plansShow.completedWorkouts = 0;
     plansShow.completedMiles = 0;
+    plansShow.labels = [];
+    plansShow.series = ['Target', 'Actual'];
+    plansShow.targetData = [];
+    plansShow.actualData =[];
+
+    // Set up chart labels
+    const numWeeks = plansShow.plan.user_days.length / 7;
+    for (var i = 0; i < numWeeks; i++) {
+      plansShow.labels.push(`Week ${i+1}`);
+      plansShow.targetMiles = 0;
+      plansShow.actualMiles = 0;
+
+      // Aggregate weekly mileage
+      plansShow.plan.user_days.forEach((day) => {
+        if (day.week === i + 1) {
+          if (day.exercise) {
+            plansShow.targetMiles += day.exercise.miles;
+          }
+          if (day.completed) {
+            plansShow.actualMiles += day.exercise.miles;
+          }
+        }
+      });
+
+      plansShow.targetData.push(plansShow.targetMiles);
+      plansShow.actualData.push(plansShow.actualMiles);
+    }
+    plansShow.data = [plansShow.targetData, plansShow.actualData];
 
     plansShow.plan.user_days.forEach((day) => {
       // Find current week
@@ -30,8 +58,8 @@ function PlansShowController(UserPlan, $state, $window) {
         plansShow.currentWeek = day.week;
       }
 
-      // Calculate total number of workout days
       if (day.exercise) {
+        // Calculate total number of workout days
         plansShow.totalWorkouts += 1;
         plansShow.totalMiles += day.exercise.miles;
 
@@ -45,14 +73,6 @@ function PlansShowController(UserPlan, $state, $window) {
 
     plansShow.totalMiles = Math.floor(plansShow.totalMiles);
     plansShow.completedMiles = Math.floor(plansShow.completedMiles);
-
-    plansShow.labels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
-    plansShow.series = ['Plan', 'Actual'];
-
-    plansShow.data = [
-      [65, 59, 80, 81, 56, 55, 40],
-      [28, 48, 40, 19, 86, 27, 90]
-    ];
 
   });
 }
