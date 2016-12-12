@@ -1,9 +1,11 @@
 <section class="homepage">
-  <h1>RUN</h1>
-  <div>
-    <a ui-sref="register">Create account</a>
+  <h1>RUN <sup>+</sup></h1>
+  <div ng-if="!main.isLoggedIn()">
+    <p><a ui-sref="register">Create account</a></p>
+    <p><a ui-sref="login">Sign in</a></p>
   </div>
-  <div>
-    <a ui-sref="login">Sign in</a>
+  <div ng-if="main.isLoggedIn()">
+    <p ng-if="!!main.activePlan"><a ui-sref="daysShow({planId: main.activePlan, dayId: main.dayId })">Today</a></p>
+    <p><a ui-sref="plansIndex">Plans</a></p>
   </div>
 </section>
