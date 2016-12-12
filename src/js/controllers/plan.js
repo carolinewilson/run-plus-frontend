@@ -1,6 +1,8 @@
 angular.module('finalProject')
   .controller('PlansIndexController', PlansIndexController)
-  .controller('PlansShowController', PlansShowController);
+  .controller('PlansShowController', PlansShowController)
+  .controller('PlansEditController', PlansEditController)
+  .controller('PlansNewController', PlansNewController);
 
 PlansIndexController.$inject = ['User', '$auth'];
 function PlansIndexController(User, $auth) {
@@ -76,4 +78,56 @@ function PlansShowController(UserPlan, $state, $window) {
     plansShow.completedMiles = Math.floor(plansShow.completedMiles);
 
   });
+}
+PlansEditController.$inject = ['$state', 'UserPlan'];
+function PlansEditController($state, UserPlan) {
+  const plansEdit = this;
+
+  plansEdit.plan = UserPlan.get($state.params);
+
+  function endPlan() {
+    plansEdit.plan.active = false;
+    UserPlan.update($state.params,plansEdit.plan, () => {
+      $state.go('plansIndex');
+    });
+  }
+
+  function deletePlan() {
+    UserPlan.remove($state.params, () => {
+      $state.go('plansIndex');
+    });
+  }
+
+  plansEdit.endPlan = endPlan;
+  plansEdit.deletePlan = deletePlan;
+}
+
+
+PlansNewController.$inject = ['User', 'UserPlan', '$state'];
+function PlansNewController(User, UserPlan, $state) {
+  const plansNew = this;
+
+  User.get($state.params, (user) => {
+    plansNew.userPlans = user.user_plans;
+    plansNew.hasActivePlan = false;
+
+    plansNew.userPlans.forEach((plan) => {
+      if (plan.active === true) {
+        plansNew.hasActivePlan = true;
+        plansNew.activePlan = plan;
+      }
+    });
+
+    if (!plansNew.hasActivePlan){
+      $state.go('setup');
+    }
+  });
+
+  function endPlan(id) {
+    plansNew.activePlan.active = false;
+    UserPlan.update(id, plansNew.activePlan, () => {
+      $state.go('setup');
+    });
+  }
+  plansNew.endPlan = endPlan;
 }

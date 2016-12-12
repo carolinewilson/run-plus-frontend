@@ -1,32 +1,23 @@
 <section>
   <h1>Your Training Plans</h1>
 
-  <p><a ui-sref="setup">Create New Plan</a></p>
-    <h2>Active Plans</h2>
-    <ul>
-      <li ng-repeat="plan in plansIndex.all.user_plans" ng-if="plan.status === 'current'">
-        <h3>{{ plan.name }}</h3>
-        <p>{{ plan.end_date }}</p>
-        <a ui-sref="plansShow({id: plan.id })">Show</a>
-      </li>
-    </ul>
-    <hr>
-    <h2>Upcoming Plans</h2>
-    <ul>
-      <li ng-repeat="plan in plansIndex.all.user_plans" ng-if="plan.status === 'future'">
-        <h3>{{ plan.name }}</h3>
-        <p>{{ plan.end_date }}</p>
-        <a ui-sref="plansShow({id: plan.id })">Show</a>
-      </li>
-    </ul>
-    <hr>
-    <h2>Past Plans</h2>
-    <ul>
-      <li ng-repeat="plan in plansIndex.all.user_plans" ng-if="plan.status === 'past'">
-        <h3>{{ plan.name }}</h3>
-        <p>{{ plan.end_date }}</p>
-        <a ui-sref="plansShow({id: plan.id })">Show</a>
-      </li>
-    </ul>
-  </div>
+  <p><a ui-sref="plansNew({ id: plansIndex.all.id })">Create New Plan</a></p>
+  <h2>Active Plans</h2>
+  <ul>
+    <li ng-repeat="plan in plansIndex.all.user_plans" ng-if="plan.active">
+      <h3>{{ plan.name }}</h3>
+      <p>{{ plan.end_date }}</p>
+      <a ui-sref="plansShow({id: plan.id })">Show</a>
+    </li>
+  </ul>
+  <hr>
+  <h2>Past Plans</h2>
+  <ul>
+    <li ng-repeat="plan in plansIndex.all.user_plans" ng-if="!plan.active">
+      <h3>{{ plan.name }}</h3>
+      <p>{{ plan.end_date }}</p>
+      <a ui-sref="plansShow({id: plan.id })">Show</a>
+    </li>
+  </ul>
+</div>
 </section>

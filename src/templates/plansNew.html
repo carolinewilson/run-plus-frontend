@@ -1,0 +1,20 @@
+<section>
+  <header>
+    <ul>
+      <li>
+        <a ui-sref="plansShow({id: plansNew.activePlan.id})">
+          <img src="../images/arrow-left.png" class="left-arrow">
+        </a>
+      </li>
+      <li>{{ plansNew.activePlan.name }}</li>
+    </ul>
+  </header>
+  <div class="">
+    <h1>You can only have one active plan at a time.</h1>
+    <p><em>Do you want to end your current plan?</em></p>
+    <p>{{ plansNew.activePlan.name }}</p>
+    <p>Race date: {{ plansNew.activePlan.end_date | date: dd-mmm-yyyy }}</p>
+    <button ng-click="plansNew.endPlan(plansNew.activePlan.id)">End</button>
+    <button ui-sref="plansShow({id: plansNew.activePlan.id})">Back</button>
+  </div>
+</section>
