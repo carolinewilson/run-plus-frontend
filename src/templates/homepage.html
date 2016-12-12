@@ -3,6 +3,7 @@
   <div ng-if="!main.isLoggedIn()">
     <p><a ui-sref="register">Create account</a></p>
     <p><a ui-sref="login">Sign in</a></p>
+    <img style="position: absolute; bottom: 5%; transform: translate(-50%, -50%);" src="../images/under_armour_login.png" />
   </div>
   <div ng-if="main.isLoggedIn()">
     <p ng-if="!!main.activePlan"><a ui-sref="daysShow({planId: main.activePlan, dayId: main.dayId })">Today</a></p>
