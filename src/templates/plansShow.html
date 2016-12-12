@@ -3,9 +3,6 @@
     <h1>{{ plansShow.plan.name }}</h1>
     <h2>{{ plansShow.plan.end_date | date: dd }}</h2>
   </div>
-  <!-- <div>
-    <plan-stats compWo="plansShow.completedWorkouts" totWo="plansShow.totalWorkouts" compMi="plansShow.completedMiles" totMi="plansShow.totalMiles"></plan-stats>
-  </div> -->
   <div>
     <ul>
       <li>{{ plansShow.completedWorkouts }} / {{ plansShow.totalWorkouts }} workouts</li>
@@ -14,7 +11,7 @@
   </div>
   <div >
     <ul dnd-list>
-      <li ng-if="plansShow.plan.status === 'current'">
+      <li ng-if="plansShow.plan.active && !plansShow.plan.future">
         <a ui-sref="weeksShow({planId: plansShow.plan.id, weekId: plansShow.currentWeek})">
           <h3>
               This week
@@ -22,12 +19,12 @@
           <img src="../images/arrow-right.png" class="right-arrow">
         </a>
       </li>
-      <li ng-if="plansShow.plan.status === 'future'">
+      <li ng-if="plansShow.plan.future">
         <h3>
             Plan not started yet
         </h3>
       </li>
-      <li ng-if="plansShow.plan.status === 'past'">
+      <li ng-if="!plansShow.plan.active">
         <h3>
             Plan finished
         </h3>

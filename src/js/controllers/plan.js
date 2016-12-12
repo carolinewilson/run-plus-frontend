@@ -9,7 +9,14 @@ function PlansIndexController(User, $auth) {
   const plansIndex = this;
 
   plansIndex.currentUser = $auth.getPayload().id;
-  plansIndex.all = User.get({id: plansIndex.currentUser});
+  plansIndex.all = User.get({id: plansIndex.currentUser}, () => {
+    plansIndex.all.user_plans.forEach((plan) => {
+      if (plan.active) {
+        plansIndex.hasActivePlan = true;
+      }
+    });
+
+  });
 }
 
 PlansShowController.$inject = ['UserPlan' ,'$state','$window'];
@@ -28,6 +35,16 @@ function PlansShowController(UserPlan, $state, $window) {
     plansShow.targetData = [];
     plansShow.actualData =[];
     plansShow.colors = ['#45b7cd', '#ff6384'];
+
+    // Check if plan has started
+    if (plansShow.plan.active) {
+      const start = moment(plansShow.plan.start_date).format('YYYY-MM-DD');
+      const today =  moment().format('YYYY-MM-DD');
+
+      if (start > today) {
+        plansShow.plan.future = true;
+      }
+    }
 
     // Set up chart
     const numWeeks = plansShow.plan.user_days.length / 7;
@@ -79,6 +96,7 @@ function PlansShowController(UserPlan, $state, $window) {
 
   });
 }
+
 PlansEditController.$inject = ['$state', 'UserPlan'];
 function PlansEditController($state, UserPlan) {
   const plansEdit = this;

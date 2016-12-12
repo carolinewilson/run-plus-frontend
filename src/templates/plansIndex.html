@@ -2,22 +2,28 @@
   <h1>Your Training Plans</h1>
 
   <p><a ui-sref="plansNew({ id: plansIndex.all.id })">Create New Plan</a></p>
-  <h2>Active Plans</h2>
-  <ul>
-    <li ng-repeat="plan in plansIndex.all.user_plans" ng-if="plan.active">
-      <h3>{{ plan.name }}</h3>
-      <p>{{ plan.end_date }}</p>
-      <a ui-sref="plansShow({id: plan.id })">Show</a>
-    </li>
-  </ul>
-  <hr>
-  <h2>Past Plans</h2>
-  <ul>
-    <li ng-repeat="plan in plansIndex.all.user_plans" ng-if="!plan.active">
-      <h3>{{ plan.name }}</h3>
-      <p>{{ plan.end_date }}</p>
-      <a ui-sref="plansShow({id: plan.id })">Show</a>
-    </li>
-  </ul>
+
+  <div>
+    <h2>Current Plan</h2>
+    <p ng-if="!plansIndex.hasActivePlan">You don't have any active plans. Why not <a ui-sref="plansNew({ id: plansIndex.all.id })">create one now</a>.</p>
+    <ul>
+      <li ng-repeat="plan in plansIndex.all.user_plans" ng-if="plan.active">
+        <h3>{{ plan.name }}</h3>
+        <p>{{ plan.end_date }}</p>
+        <a ui-sref="plansShow({id: plan.id })">Show</a>
+      </li>
+    </ul>
+  </div>
+  <div ng-if="plansIndex.all.user_plans">
+    <hr>
+    <h2>Past Plans</h2>
+    <ul>
+      <li ng-repeat="plan in plansIndex.all.user_plans" ng-if="!plan.active">
+        <h3>{{ plan.name }}</h3>
+        <p>{{ plan.end_date }}</p>
+        <a ui-sref="plansShow({id: plan.id })">Show</a>
+      </li>
+    </ul>
+  </div>
 </div>
 </section>
