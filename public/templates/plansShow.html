@@ -3,6 +3,9 @@
     <h1>{{ plansShow.plan.name }}</h1>
     <h2>{{ plansShow.plan.end_date | date: dd }}</h2>
   </div>
+  <!-- <div>
+    <plan-stats compWo="plansShow.completedWorkouts" totWo="plansShow.totalWorkouts" compMi="plansShow.completedMiles" totMi="plansShow.totalMiles"></plan-stats>
+  </div> -->
   <div>
     <ul>
       <li>{{ plansShow.completedWorkouts }} / {{ plansShow.totalWorkouts }} workouts</li>
