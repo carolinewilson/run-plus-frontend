@@ -9,7 +9,11 @@
       <li>{{ daysShow.day.date | date: dd }}</li>
     </ul>
   </header>
-  <div class="">
+  <div ng-if="!daysShow.day.exercise">
+    <h1>Rest day</h1>
+    <button ui-sref="weeksShow({planId: daysShow.planId, weekId: daysShow.day.week })">View Week</button>
+  </div>
+  <div ng-if="daysShow.day.exercise">
     <h3>{{ daysShow.day.exercise.name }}</h3>
     <h1>{{ daysShow.day.exercise.miles }} miles</h1>
     <button ng-if="daysShow.day.completed" disabled="true" class="disabled">Complete</button>
