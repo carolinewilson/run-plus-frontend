@@ -1,8 +1,9 @@
 angular.module('finalProject')
   .service('StravaService', StravaService);
 
-StravaService.$inject = ['$http'];
-function StravaService($http) {
+StravaService.$inject = ['$http', '$window'];
+function StravaService($http, $window) {
+  const moment = $window.moment;
 
   function getActivities(accessToken) {
 

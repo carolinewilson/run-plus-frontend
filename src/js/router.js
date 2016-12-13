@@ -50,7 +50,7 @@ function Router($stateProvider, $urlRouterProvider) {
       controller: 'DaysIndexController as daysIndex'
     })
     .state('daysShow', {
-      url: '/plans/:planId/days/:dayId',
+      url: '/plans/:planId/days/:dayId?stravaId',
       templateUrl: '/templates/daysShow.html',
       controller: 'DaysShowController as daysShow'
     })

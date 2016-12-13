@@ -7,9 +7,10 @@
     <ul>
       <li ng-repeat="userDay in stravaIndex.userDays" ng-if="userDay.date === activity.start_date">
         <p ng-if="userDay.exercise">{{ userDay.exercise.name }}</p>
-        <p ng-if="!userDay.exercise"> Rest day</p>
-        <button ng-if="userDay.exercise" ui-sref="daysShow({planId: stravaIndex.userPlanId, dayId: userDay.id})">View Planned Activity</button>
-        <button  ng-if="userDay.exercise" ng-click="stravaIndex.viewDay(activity.id)">Mark as done</button>
+        <p ng-if="!userDay.exercise">Rest day</p>
+        <button ng-if="userDay.exercise && !userDay.completed" ui-sref="daysShow({planId: stravaIndex.userPlanId, dayId: userDay.id})">View Planned Activity</button>
+        <button ng-if="userDay.exercise && userDay.completed" ui-sref="daysShow({planId: stravaIndex.userPlanId, dayId: userDay.id, stravaId: activity.id})">View Activity {{ activity.id }}</button>
+        <button  ng-if="userDay.exercise && !userDay.completed" ng-click="stravaIndex.markComplete(stravaIndex.userPlanId, userDay.id, activity.id)">Mark as done</button>
       </li>
     </ul>
   </li>

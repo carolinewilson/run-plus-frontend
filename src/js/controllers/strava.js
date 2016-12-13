@@ -1,8 +1,8 @@
 angular.module('finalProject')
   .controller('StravaIndexController', StravaIndexController);
 
-StravaIndexController.$inject = ['$http', 'StravaService','$auth', 'User','UserPlan', '$window'];
-function StravaIndexController($http, StravaService, $auth, User, UserPlan, $window){
+StravaIndexController.$inject = ['$http', 'StravaService','$auth', 'User','UserPlan','Day', '$window', '$state'];
+function StravaIndexController($http, StravaService, $auth, User, UserPlan, Day, $window, $state){
   const stravaIndex = this;
   const moment = $window.moment;
   const userId = $auth.getPayload().id;
@@ -24,7 +24,7 @@ function StravaIndexController($http, StravaService, $auth, User, UserPlan, $win
 
 
   // Get activities from Strava
-  const accessToken = 'b4a334d702082f818e68b3dc918cc7491a3e780c';
+  const accessToken = $window.localStorage.getItem('strava_token');
 
   StravaService
     .getActivities(accessToken)
@@ -37,9 +37,17 @@ function StravaIndexController($http, StravaService, $auth, User, UserPlan, $win
       }
     );
 
-  function viewDay(stravaActivityId) {
-    console.log('clicked');
-    console.log(stravaActivityId);
+  function markComplete(planId, dayId, stravaId){
+
+    Day.get({id: dayId}, (res) => {
+      res.completed = true;
+      res.strava_id = stravaId;
+
+      Day.update(res, res, () => {
+        $state.go('daysShow', {planId: planId, dayId: dayId, stravaId: stravaId});
+      });
+    });
   }
-  stravaIndex.viewDay = viewDay;
+
+  stravaIndex.markComplete = markComplete;
 }
