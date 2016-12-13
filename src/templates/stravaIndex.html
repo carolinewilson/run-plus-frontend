@@ -4,5 +4,15 @@
     <p>{{ activity.start_date | date: dd}}</p>
     <p>{{ activity.name }}</p>
     <p>{{ (activity.distance / 1000) * 0.621371 | number: 1 }} mi</p>
+    <ul>
+      <li ng-repeat="userDay in stravaIndex.userDays" ng-if="userDay.date === activity.start_date">
+        <p>{{ userDay.date | date: dd}}</p>
+      </li>
+    </ul>
   </li>
 </ul>
+<!-- <ul>
+  <li ng-repeat="activity in stravaIndex.userDays">
+    <p>{{ activity.date | date: dd}}</p>
+  </li>
+</ul> -->

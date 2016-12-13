@@ -10,8 +10,8 @@ function UsersIndexController(User) {
   usersIndex.all = User.query();
 }
 
-UsersShowController.$inject = ['User', '$state','$auth', '$window', 'StravaService'];
-function UsersShowController(User, $state, $auth, $window, StravaService) {
+UsersShowController.$inject = ['User', '$state','$auth', '$window'];
+function UsersShowController(User, $state, $auth, $window) {
   const usersShow = this;
   usersShow.user = User.get($state.params);
 
@@ -32,28 +32,13 @@ function UsersShowController(User, $state, $auth, $window, StravaService) {
   function authenticateStrava() {
     $auth.authenticate('strava')
       .then((res) => {
-        // console.log(res);
         $window.localStorage.setItem('strava_token', res.data.access_token);
 
         usersShow.user.strava_id = res.data.athlete.id;
-
-        // console.log(usersShow.user);
-
-        // User.update($state.params.id, usersShow.user, (data) => {
-        //   console.log(data);
-        // });
-
-        // StravaService
-        //   .getActivities(res.data.access_token)
-        //   .then(
-        //     successResponse => {
-        //       console.log(successResponse);
-        //       usersShow.user.stravaData = successResponse;
-        //     },
-        //     errorResponse => {
-        //       console.log(errorResponse);
-        //     }
-        //   );
+        
+        User.update(usersShow.user.id, usersShow.user, (data) => {
+          console.log(data);
+        });
       });
   }
 
