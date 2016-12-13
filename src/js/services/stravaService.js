@@ -13,6 +13,10 @@ function StravaService($http) {
         accessToken
       }
     }).then(function successCallback(response) {
+      response.data.forEach((activity) => {
+        activity.start_date = moment(activity.start_date).format("YYYY-MM-DD");
+      });
+
       return response.data;
     }, function errorCallback(response) {
       console.log(response);

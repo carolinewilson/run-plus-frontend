@@ -10,8 +10,12 @@ function StravaIndexController($http, StravaService, $auth, User, UserPlan){
     res.user_plans.forEach((plan) => {
       if (plan.active) {
         UserPlan.get({id: plan.id }, (data) => {
-          console.log(data.user_days);
           stravaIndex.userDays = data.user_days;
+          data.user_days.forEach((day) => {
+            day.date = moment(day.date).format("YYYY-MM-DD");
+          });
+
+          console.log(data.user_days);
         });
       }
     });

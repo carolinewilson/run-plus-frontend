@@ -22,6 +22,7 @@ function UsersShowController(User, $state, $auth, $window) {
   }
 
   function logout() {
+  
     $auth.logout()
       .then(() => {
         $window.localStorage.removeItem('strava_token');
@@ -35,7 +36,7 @@ function UsersShowController(User, $state, $auth, $window) {
         $window.localStorage.setItem('strava_token', res.data.access_token);
 
         usersShow.user.strava_id = res.data.athlete.id;
-        
+
         User.update(usersShow.user.id, usersShow.user, (data) => {
           console.log(data);
         });
