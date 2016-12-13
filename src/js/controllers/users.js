@@ -10,8 +10,8 @@ function UsersIndexController(User) {
   usersIndex.all = User.query();
 }
 
-UsersShowController.$inject = ['User', '$state','$auth'];
-function UsersShowController(User, $state, $auth) {
+UsersShowController.$inject = ['User', '$state','$auth', '$window', 'StravaService'];
+function UsersShowController(User, $state, $auth, $window, StravaService) {
   const usersShow = this;
   usersShow.user = User.get($state.params);
 
@@ -24,12 +24,42 @@ function UsersShowController(User, $state, $auth) {
   function logout() {
     $auth.logout()
       .then(() => {
+        $window.localStorage.removeItem('strava_token');
         $state.go('homepage');
+      });
+  }
+
+  function authenticateStrava() {
+    $auth.authenticate('strava')
+      .then((res) => {
+        // console.log(res);
+        $window.localStorage.setItem('strava_token', res.data.access_token);
+
+        usersShow.user.strava_id = res.data.athlete.id;
+
+        // console.log(usersShow.user);
+
+        // User.update($state.params.id, usersShow.user, (data) => {
+        //   console.log(data);
+        // });
+
+        // StravaService
+        //   .getActivities(res.data.access_token)
+        //   .then(
+        //     successResponse => {
+        //       console.log(successResponse);
+        //       usersShow.user.stravaData = successResponse;
+        //     },
+        //     errorResponse => {
+        //       console.log(errorResponse);
+        //     }
+        //   );
       });
   }
 
   usersShow.logout = logout;
   usersShow.delete = userDelete;
+  usersShow.authenticateStrava = authenticateStrava;
 }
 
 UsersEditController.$inject = ['User', '$state'];

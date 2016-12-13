@@ -54,6 +54,11 @@ function Router($stateProvider, $urlRouterProvider) {
       templateUrl: '/templates/daysShow.html',
       controller: 'DaysShowController as daysShow'
     })
+    .state('stravaIndex', {
+      url: '/strava',
+      templateUrl: '/templates/stravaIndex.html',
+      controller: 'StravaIndexController as stravaIndex'
+    })
     .state('usersIndex', {
       url: '/users',
       templateUrl: '/templates/usersIndex.html',

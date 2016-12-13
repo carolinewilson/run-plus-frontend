@@ -1,9 +1,20 @@
 <section>
   <h1>Users Show</h1>
   <h2>{{ usersShow.user.username }}</h2>
-  <h4>{{ usersShow.user.email }}</h4>
   <button ui-sref="usersEdit({ id: usersShow.user.id })">Edit</button>
-  <button ng-click="main.logout()">Logout</button>
-  <!-- <a ng-click="usersShow.delete()">Delete</a> -->
-  <!-- <a ui-sref="usersIndex">Back</a> -->
+
+  <h4>{{ usersShow.user.email }}</h4>
+
+  <div>
+    <button ng-click="usersShow.authenticateStrava()">Sync with Strava</button>
+    <!-- <ul>
+      <li ng-repeat="activity in usersShow.user.stravaData">
+      {{ activity.name }}</li> </ul>-->
+  </div>
+  <div>
+
+    <button ng-click="main.logout()">Logout</button>
+
+    <button ng-click="usersShow.delete()">Delete Accout</button>
+  </div>
 </section>

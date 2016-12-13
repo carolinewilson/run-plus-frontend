@@ -8,4 +8,12 @@ function Auth($authProvider, API_URL) {
   $authProvider.signupUrl = `${API_URL}/register`;
 
   $authProvider.tokenPrefix = '';
+
+  $authProvider.oauth2({
+    name: 'strava',
+    url: `${API_URL}/oauth/strava`,
+    clientId: '15120',
+    redirectUri: window.location.origin,
+    authorizationEndpoint: 'https://www.strava.com/oauth/authorize'
+  });
 }

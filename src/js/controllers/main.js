@@ -9,6 +9,11 @@ function MainController($auth, $state, User, UserPlan, $window){
   main.isLoggedIn = $auth.isAuthenticated;
   main.hasActivePlan = false;
 
+  function getUserId() {
+    const userId = $auth.getPayload().id;
+    $state.go('usersShow', {id: userId});
+  }
+
   if (main.isLoggedIn()) {
     main.currentUser = $auth.getPayload().id;
 
@@ -39,5 +44,7 @@ function MainController($auth, $state, User, UserPlan, $window){
         $state.go('homepage');
       });
   }
+
   main.logout = logout;
+  main.getUserId = getUserId;
 }

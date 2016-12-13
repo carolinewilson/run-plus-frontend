@@ -1,0 +1,8 @@
+<h1>Activities</h1>
+<ul>
+  <li ng-repeat="activity in stravaIndex.data" ng-if="activity.type === 'Run'">
+    <p>{{ activity.start_date | date: dd}}</p>
+    <p>{{ activity.name }}</p>
+    <p>{{ (activity.distance / 1000) * 0.621371 | number: 1 }} mi</p>
+  </li>
+</ul>
