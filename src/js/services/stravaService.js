@@ -16,6 +16,7 @@ function StravaService($http, $window) {
     }).then(function successCallback(response) {
       response.data.forEach((activity) => {
         activity.start_date = moment(activity.start_date).format('YYYY-MM-DD');
+
       });
 
       return response.data;
@@ -34,9 +35,11 @@ function StravaService($http, $window) {
         accessToken
       }
     }).then(function successCallback(response) {
-      response.data.forEach((activity) => {
-        activity.start_date = moment(activity.start_date).format('YYYY-MM-DD');
-      });
+      response.data.distance = ((response.data.distance / 1000) * 0.621371).toFixed(1);
+
+      response.data.elapsed_minutes = Math.floor(response.data.elapsed_time / 60);
+      response.data.elapsed_seconds = ((response.data.elapsed_time % 60) * 60);
+
 
       return response.data;
     }, function errorCallback(response) {

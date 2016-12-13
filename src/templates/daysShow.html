@@ -19,6 +19,14 @@
     <button ng-if="daysShow.day.completed" disabled="true" class="disabled">Complete</button>
     <button ng-if="!daysShow.day.completed" ng-click="daysShow.markDone()">Completed</button>
   </div>
+  <div ng-if="daysShow.stravaData">
+    <h3>{{ daysShow.stravaData.name }}</h3>
+    <p>{{ daysShow.stravaData.location_city }}, {{ daysShow.stravaData.location_country }}</p>
+    <p>DISTANCE</p>
+    <p>{{ daysShow.stravaData.distance }} mi</p>
+    <p>TIME</p>
+    <p>{{ daysShow.stravaData.elapsed_minutes }}:{{ daysShow.stravaData.elapsed_seconds | limitTo:2 }}</p>
+  </div>
 
-  {{ daysShow.stravaData }}
+  <google-map></google-map>
 </section>
