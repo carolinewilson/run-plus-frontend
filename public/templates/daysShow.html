@@ -19,4 +19,6 @@
     <button ng-if="daysShow.day.completed" disabled="true" class="disabled">Complete</button>
     <button ng-if="!daysShow.day.completed" ng-click="daysShow.markDone()">Completed</button>
   </div>
+
+  {{ daysShow.stravaData }}
 </section>
