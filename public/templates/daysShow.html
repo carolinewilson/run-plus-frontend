@@ -28,5 +28,5 @@
     <p>{{ daysShow.stravaData.elapsed_minutes }}:{{ daysShow.stravaData.elapsed_seconds | limitTo:2 }}</p>
   </div>
 
-  <google-map></google-map>
+  <google-map data="daysShow.stravaData" ng-if="daysShow.stravaData"></google-map>
 </section>
