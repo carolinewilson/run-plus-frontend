@@ -14,6 +14,9 @@ function MainController($auth, $state, User, UserPlan, $window){
     $state.go('usersShow', {id: userId});
   }
 
+  // Check if user has Strava account
+  main.hasStrava = $window.localStorage.getItem('strava_token');
+
   if (main.isLoggedIn()) {
     main.currentUser = $auth.getPayload().id;
 

@@ -20,7 +20,7 @@ function PlansIndexController(User, $auth) {
 }
 
 PlansShowController.$inject = ['UserPlan' ,'$state','$window'];
-function PlansShowController(UserPlan, $state, $window) {
+function PlansShowController(UserPlan, $state, $window, $auth) {
   const plansShow = this;
   const moment = $window.moment;
 
@@ -45,6 +45,9 @@ function PlansShowController(UserPlan, $state, $window) {
         plansShow.plan.future = true;
       }
     }
+
+    // Check if user has Strava account
+    plansShow.hasStrava = $window.localStorage.getItem('strava_token');
 
     // Set up chart
     const numWeeks = plansShow.plan.user_days.length / 7;
