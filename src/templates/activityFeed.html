@@ -13,14 +13,12 @@
   <ul>
     <li ng-repeat="activity in stravaIndex.allActivities | orderBy: 'date'" >
       <div ng-if="activity.exercise">
-        <h3>Workout</h3>
-        <p>{{activity.date | date: dd}}</p>
+        <h3>{{activity.date | date: dd}}</h3>
         <p>{{activity.exercise.name}}</p>
         <button ui-sref="daysShow({planId: stravaIndex.planId, dayId: activity.id})">View Day</button>
       </div>
       <div ng-if="!activity.exercise">
-        <h3>Strava Workout</h3>
-        <p>{{ activity.start_date | date: dd}}</p>
+        <h3>{{ activity.start_date | date: dd}}</h3>
         <div ng-if="activity.userDay">
           <p ng-if="!activity.userDay.exercise">REST DAY</p>
           <p ng-if="activity.userDay.exercise">{{ activity.userDay.exercise.name }}</p>

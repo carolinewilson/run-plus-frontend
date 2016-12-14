@@ -1,6 +1,8 @@
 body {
   margin-bottom: 80px;
   top: 0;
+  background-color: FireBrick;
+  color: white;
   ul {
     list-style: none;
     li {
@@ -21,9 +23,12 @@ body {
       }
     }
   }
+  button a{
+    color: white;
+  }
   a {
     text-decoration: none;
-    color: #7F195E;
+    color: FireBrick;
   }
   a:hover {
     color: black;

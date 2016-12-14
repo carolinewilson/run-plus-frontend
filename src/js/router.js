@@ -55,8 +55,8 @@ function Router($stateProvider, $urlRouterProvider) {
       controller: 'DaysShowController as daysShow'
     })
     .state('stravaIndex', {
-      url: '/strava',
-      templateUrl: '/templates/stravaIndex.html',
+      url: '/feed',
+      templateUrl: '/templates/activityFeed.html',
       controller: 'StravaIndexController as stravaIndex'
     })
     .state('usersIndex', {

@@ -24,7 +24,6 @@ function PlansShowController(UserPlan, $state, $window) {
   const plansShow = this;
   const moment = $window.moment;
   UserPlan.get($state.params, (res) => {
-    console.log(res);
     plansShow.plan = res;
     plansShow.totalWorkouts = 0;
     plansShow.totalMiles = 0;
@@ -47,7 +46,6 @@ function PlansShowController(UserPlan, $state, $window) {
     } else {
       plansShow.plan.status = 'future';
     }
-    console.log(plansShow.plan.status);
 
     // Check if user has Strava account
     plansShow.hasStrava = $window.localStorage.getItem('strava_token');
