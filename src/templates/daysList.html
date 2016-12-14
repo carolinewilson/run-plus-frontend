@@ -1,5 +1,5 @@
 <ul dnd-list>
-  <li ng-repeat="day in days" ng-class="{ 'complete' : day.completed }">
+  <li ng-repeat="day in days | orderBy: 'position'" ng-class="{ 'complete' : day.completed }" >
     <p>{{ day.date | date: dd }}</p>
     <a ui-sref="daysShow({planId: plan, dayId: day.id, stravaId: day.strava_id})" ng-if="day.exercise.name">{{ day.exercise.name }}</a>
     <a ng-if="!day.exercise.name">Rest day</a>
