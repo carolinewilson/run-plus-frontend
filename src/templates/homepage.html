@@ -1,12 +1,11 @@
 <section class="homepage">
   <h1>RUN <sup>+</sup></h1>
   <div ng-if="!main.isLoggedIn()">
-    <p><a ui-sref="register">Create account</a></p>
-    <p><a ui-sref="login">Sign in</a></p>
-    <a ng-click="main.underArmour()"><img style="position: absolute; bottom: 5%; transform: translate(-50%, -50%);" src="../images/under_armour_login.png" /></a>
+    <button><a ui-sref="register">Create account</a></button>
+    <button><a ui-sref="login">Sign in</a></button>
   </div>
   <div ng-if="main.isLoggedIn()">
-    <p ng-if="!!main.activePlan"><a ui-sref="daysShow({planId: main.activePlan, dayId: main.dayId })">Today</a></p>
-    <p><a ui-sref="plansIndex">Plans</a></p>
+    <button ng-if="!!main.activePlan"><a ui-sref="daysShow({planId: main.activePlan, dayId: main.dayId })">Today</a></button>
+    <button><a ui-sref="plansIndex">Plans</a></button>
   </div>
 </section>

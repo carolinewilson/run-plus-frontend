@@ -11,7 +11,7 @@
   </div>
   <div >
     <ul dnd-list>
-      <li ng-if="plansShow.plan.active && !plansShow.plan.future">
+      <li ng-if="plansShow.plan.active && !plansShow.plan.future && plansShow.currentWeek">
         <a ui-sref="weeksShow({planId: plansShow.plan.id, weekId: plansShow.currentWeek})">
           <h3>
               This week
@@ -19,9 +19,9 @@
           <img src="../images/arrow-right.png" class="right-arrow">
         </a>
       </li>
-      <li ng-if="plansShow.plan.future">
+      <li ng-if="plansShow.plan.future || (plansShow.plan.active && !plansShow.currentWeek)">
         <h3>
-            Plan not started yet
+            Plan starts on {{ plansShow.plan.start_date | date: dd }}
         </h3>
       </li>
       <li ng-if="!plansShow.plan.active">
