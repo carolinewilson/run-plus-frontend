@@ -10,13 +10,5 @@
     </ul>
   </header>
   <h1>Plan Daily Breakdown</h1>
-  <ul>
-    <li ng-repeat="day in daysIndex.plan.user_days" ng-class="{ 'complete' : day.completed }">
-      <p>{{ day.date | date: dd }}</p>
-      <a ui-sref="daysShow({planId: daysIndex.plan.id, dayId: day.id})" ng-if="day.exercise.name">{{ day.exercise.name }}</a>
-      <a ng-if="!day.exercise.name">Rest day</a>
-      <hr>
-    </li>
-  </ul>
-
+  <days-list days="daysIndex.plan.user_days" plan="daysIndex.plan.id" ng-if="daysIndex.plan.user_days"></days-list>
 </section>

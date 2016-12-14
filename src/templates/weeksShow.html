@@ -17,12 +17,6 @@
       <li>{{ weeksShow.completedMiles }} / {{ weeksShow.totalMiles }} miles</li>
     </ul>
   </div>
-  <ul dnd-list>
-    <li ng-repeat="day in weeksShow.thisWeek" ng-class="{ 'complete' : day.completed }">
-      <p>{{ day.date | date: dd }}</p>
-      <a ui-sref="daysShow({planId: weeksShow.planId, dayId: day.id, stravaId: day.strava_id})" ng-if="day.exercise.name">{{ day.exercise.name }}</a>
-      <a ng-if="!day.exercise.name">Rest day</a>
-      <a ui-sref="daysShow({planId: weeksShow.planId, dayId: day.id, stravaId: day.strava_id})" ng-if="day.exercise.name"><img ng-if="day.exercise.name" src="../images/arrow-right.png" class="right-arrow"></a>
-    </li>
-  </ul>
+
+  <days-list days="weeksShow.thisWeek" plan="weeksShow.planId" ng-if="weeksShow.thisWeek"></days-list>
 </section>
