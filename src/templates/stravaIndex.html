@@ -9,11 +9,19 @@
       <li>ACTIVITY FEED</li>
     </ul>
   </header>
-  <button>SYNC WITH STRAVA</button>
+  <button ng-click="stravaIndex.sync()">SYNC WITH STRAVA</button>
   <ul>
     <li ng-repeat="activity in stravaIndex.allActivities" ng-if="activity.type === 'Run'">
       <p>{{ activity.start_date | date: dd}}</p>
-      <p ng-if="activity.userDay">MATCH {{ activity.userDay }}</p>
+      <div ng-if="activity.userDay">
+        MATCH
+        <!-- {{ activity.userDay }} -->
+        <p ng-if="!activity.userDay.exercise">REST DAY</p>
+        <p ng-if="activity.userDay.exercise">{{ activity.userDay.exercise.name }}</p>
+        <button ng-if="activity.userDay.exercise.strava_id" ui-sref="'daysShow({planId: planId, dayId: dayId, stravaId: stravaId})'">View Run</button>
+        <button ng-if="activity.userDay.exercise && !activity.userDay.exercise.strava_id" ng-click="stravaIndex.markComplete({planId: stravaIndex.planId, dayId: activity.userDay.id, stravaId: activity.id})">Mark completed</button>
+      </div>
+
       <p>{{ activity.name }}<span ng-if="activity.location_city">, {{ activity.location_city }}</span></p>
       <p>{{ activity.distance }} mi</p>
       <p>{{ activity.elapsed_hours }}:{{ activity.elapsed_minutes }}:{{ activity.elapsed_seconds}}</p>

@@ -8,7 +8,14 @@ function StravaIndexController($http, StravaService, $auth, User, UserPlan, Day,
   const userId = $auth.getPayload().id;
   stravaIndex.allActivities = [];
   stravaIndex.userDays = [];
-  const accessToken = $window.localStorage.getItem('strava_token');
+
+  function hasStravaToken () {
+    return !!$window.localStorage.getItem('strava_token');
+  }
+
+  function getStravaToken() {
+    return $window.localStorage.getItem('strava_token');
+  }
 
   function matchUserDays(stravaData) {
     for(let i=0;i<stravaData.length;i++) {
@@ -24,38 +31,60 @@ function StravaIndexController($http, StravaService, $auth, User, UserPlan, Day,
     return stravaData;
   }
 
+  function init() {
+    UserPlan.query({ user_id: userId, active: true }).$promise.then((userPlans) => {
+      stravaIndex.planId = userPlans[0].id;
 
-  UserPlan.query({ user_id: userId, active: true }).$promise.then((userPlans) => {
-    stravaIndex.planId = userPlans[0].id;
-    stravaIndex.userDays = userPlans[0].user_days;
-    if(accessToken){
-      return StravaService
-        .activityIndex(accessToken);
-    }
-  })
-  .then((stravaData) => {
-    stravaIndex.allActivities = matchUserDays(stravaData || []);
+      stravaIndex.userDays = userPlans[0].user_days;
+      if(hasStravaToken()){
+        return StravaService
+          .activityIndex(getStravaToken());
+      }
+    })
+    .then((stravaData) => {
+      stravaIndex.allActivities = matchUserDays(stravaData || []);
 
-    const completedDays = stravaIndex.userDays.filter((day) => {
-      return day.completed;
-    });
-
-    stravaIndex.allActivities.concat(completedDays);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-
-  function markComplete(planId, dayId, stravaId){
-
-    Day.get({id: dayId}, (res) => {
-      res.completed = true;
-      res.strava_id = stravaId;
-
-      Day.update(res, res, () => {
-        $state.go('daysShow', {planId: planId, dayId: dayId, stravaId: stravaId});
+      const completedDays = stravaIndex.userDays.filter((day) => {
+        return day.completed;
       });
+
+      stravaIndex.allActivities.concat(completedDays);
+    })
+    .catch((err) => {
+      console.log(err);
     });
   }
+
+  function markComplete(planId, dayId, stravaId) {
+    console.log(planId, dayId, stravaId);
+    Day.get({id: dayId}, (res) => {
+      console.log(res);
+      res.completed = true;
+      res.strava_id = stravaId;
+      console.log(res);
+      // Day.update(res, res, () => {
+      //   $state.go('daysShow', {planId: planId, dayId: dayId, stravaId: stravaId});
+      // });
+    });
+  }
+
+  function sync() {
+    if (!hasStravaToken()) {
+      $auth.authenticate('strava')
+        .then((res) => {
+          $window.localStorage.setItem('strava_token', res.data.access_token);
+          const stravaId = res.data.athlete.id;
+          User.update({id: userId}, {strava_id: stravaId}, () => {
+            init();
+          });
+        });
+    } else {
+      init();
+    }
+  }
+
+
+  init();
   stravaIndex.markComplete = markComplete;
+  stravaIndex.sync = sync;
 }
