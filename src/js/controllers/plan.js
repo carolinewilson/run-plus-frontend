@@ -23,9 +23,9 @@ PlansShowController.$inject = ['UserPlan' ,'$state','$window'];
 function PlansShowController(UserPlan, $state, $window) {
   const plansShow = this;
   const moment = $window.moment;
-
-  plansShow.plan = UserPlan.get($state.params, () => {
-
+  UserPlan.get($state.params, (res) => {
+    console.log(res);
+    plansShow.plan = res;
     plansShow.totalWorkouts = 0;
     plansShow.totalMiles = 0;
     plansShow.completedWorkouts = 0;
@@ -35,19 +35,19 @@ function PlansShowController(UserPlan, $state, $window) {
     plansShow.targetData = [];
     plansShow.actualData =[];
     plansShow.colors = ['#45b7cd', '#ff6384'];
+    const today =  moment().format('YYYY-MM-DD');
+    const start = moment(plansShow.plan.start_date).format('YYYY-MM-DD');
+    const end = moment(plansShow.plan.end_date).format('YYYY-MM-DD');
 
-    // Check if plan has started
-    if (plansShow.plan.active) {
-      const start = moment(plansShow.plan.start_date).format('YYYY-MM-DD');
-      const today =  moment().format('YYYY-MM-DD');
-
-      if (start > today) {
-        plansShow.plan.future = true;
-      } else {
-        plansShow.plan.future = false;
-      }
-      console.log(plansShow.plan.future);
+    // Check plan status
+    if (start < today && today > end) {
+      plansShow.plan.status = 'past';
+    } else if (start < today && today < end) {
+      plansShow.plan.status = 'current';
+    } else {
+      plansShow.plan.status = 'future';
     }
+    console.log(plansShow.plan.status);
 
     // Check if user has Strava account
     plansShow.hasStrava = $window.localStorage.getItem('strava_token');

@@ -12,7 +12,7 @@ function googleMap($window) {
     },
     link: function($scope, element) {
       $scope.$watch('data', () => {
-        const map = new   $window.google.maps.Map(element[0], {
+        const map = new $window.google.maps.Map(element[0], {
           center: {lat: $scope.data[0].lat, lng: $scope.data[0].lng},
           zoom: 14,
           disableDefaultUI: true,
