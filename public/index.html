@@ -27,6 +27,7 @@
         <li ng-if="main.isLoggedIn() && !main.activePlan"><a ui-sref="setup">New Plan</a></li>
         <li ng-if="!!main.activePlan"><a ui-sref="daysShow({planId: main.activePlan, dayId: main.dayId })">Today</a></li>
         <li ng-if="main.isLoggedIn()"><a ng-click="main.getUserId()">Profile</a></li>
+        <li ng-if="main.isLoggedIn()"><a ui-sref="stravaIndex">Feed</a></li>
       </ul>
     </nav>
   </body>

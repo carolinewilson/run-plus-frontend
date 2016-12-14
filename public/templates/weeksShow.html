@@ -20,9 +20,9 @@
   <ul dnd-list>
     <li ng-repeat="day in weeksShow.thisWeek" ng-class="{ 'complete' : day.completed }">
       <p>{{ day.date | date: dd }}</p>
-      <a ui-sref="daysShow({planId: weeksShow.planId, dayId: day.id})" ng-if="day.exercise.name">{{ day.exercise.name }}</a>
+      <a ui-sref="daysShow({planId: weeksShow.planId, dayId: day.id, stravaId: day.strava_id})" ng-if="day.exercise.name">{{ day.exercise.name }}</a>
       <a ng-if="!day.exercise.name">Rest day</a>
-      <a ui-sref="daysShow({planId: weeksShow.planId, dayId: day.id})" ng-if="day.exercise.name"><img ng-if="day.exercise.name" src="../images/arrow-right.png" class="right-arrow"></a>
+      <a ui-sref="daysShow({planId: weeksShow.planId, dayId: day.id, stravaId: day.strava_id})" ng-if="day.exercise.name"><img ng-if="day.exercise.name" src="../images/arrow-right.png" class="right-arrow"></a>
     </li>
   </ul>
 </section>

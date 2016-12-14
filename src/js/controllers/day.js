@@ -29,7 +29,6 @@ function DaysShowController(Day, $state, $window, StravaService) {
       .then(
         successResponse => {
           daysShow.stravaData = successResponse;
-          console.log(daysShow.stravaData);
         },
         errorResponse => {
           console.log(errorResponse);

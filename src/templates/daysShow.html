@@ -26,7 +26,7 @@
     <p>{{ daysShow.stravaData.distance }} mi</p>
     <p>TIME</p>
     <p>{{ daysShow.stravaData.elapsed_minutes }}:{{ daysShow.stravaData.elapsed_seconds | limitTo:2 }}</p>
-  </div>
 
-  <google-map data="daysShow.stravaData" ng-if="daysShow.stravaData"></google-map>
+    <google-map data="daysShow.stravaData" ng-if="daysShow.stravaData"></google-map>
+  </div>
 </section>
