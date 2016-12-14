@@ -13,12 +13,16 @@ function googleMap($window) {
     link: function($scope, element) {
       $scope.$watch('data', () => {
         const map = new   $window.google.maps.Map(element[0], {
-          center: {lat: $scope.data.map.polyline[0].lat, lng: $scope.data.map.polyline[0].lng},
-          zoom: 14
+          center: {lat: $scope.data[0].lat, lng: $scope.data[0].lng},
+          zoom: 14,
+          disableDefaultUI: true,
+          zoomControl: true,
+          scaleControl: true,
+          scrollwheel: false
         });
-        
+
         const run = new $window.google.maps.Polyline({
-          path: $scope.data.map.polyline,
+          path: $scope.data,
           geodesic: true,
           strokeColor: '#FF0000',
           strokeOpacity: 1.0,

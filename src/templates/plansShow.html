@@ -1,4 +1,4 @@
-<section>
+<section id="top">
   <div>
     <h1>{{ plansShow.plan.name }}</h1>
     <h2>{{ plansShow.plan.end_date | date: dd }}</h2>
@@ -19,12 +19,12 @@
           <img src="../images/arrow-right.png" class="right-arrow">
         </a>
       </li>
-      <li ng-if="plansShow.plan.future || (plansShow.plan.active && !plansShow.currentWeek)">
+      <li ng-if="plansShow.plan.future || (plansShow.plan.active && !plansShow.currentWeek && plansShow.plan.future)">
         <h3>
             Plan starts on {{ plansShow.plan.start_date | date: dd }}
         </h3>
       </li>
-      <li ng-if="!plansShow.plan.active">
+      <li ng-if="!plansShow.plan.active || (plansShow.plan.active && !plansShow.plan.future)">
         <h3>
             Plan finished
         </h3>

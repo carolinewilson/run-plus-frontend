@@ -6,36 +6,45 @@ function StravaIndexController($http, StravaService, $auth, User, UserPlan, Day,
   const stravaIndex = this;
   const moment = $window.moment;
   const userId = $auth.getPayload().id;
-
-  User.get({id: userId}, (res) => {
-    res.user_plans.forEach((plan) => {
-      if (plan.active) {
-        stravaIndex.userPlanId = plan.id;
-        UserPlan.get({id: plan.id }, (data) => {
-          stravaIndex.userDays = data.user_days;
-          data.user_days.forEach((day) => {
-            day.date = moment(day.date).format('YYYY-MM-DD');
-          });
-
-        });
-      }
-    });
-  });
-
-
-  // Get activities from Strava
+  stravaIndex.allActivities = [];
+  stravaIndex.userDays = [];
   const accessToken = $window.localStorage.getItem('strava_token');
 
-  StravaService
-    .getActivities(accessToken)
-    .then(
-      successResponse => {
-        stravaIndex.data = successResponse;
-      },
-      errorResponse => {
-        console.log(errorResponse);
+  function matchUserDays(stravaData) {
+    for(let i=0;i<stravaData.length;i++) {
+      const userDayIdx = stravaIndex.userDays.findIndex((day) => {
+        return moment(day.date).format('YYYY-MM-DD') === stravaData[i].start_date;
+      });
+
+      if(userDayIdx > 0) {
+        stravaData[i].userDay = stravaIndex.userDays.splice(userDayIdx, 1)[0];
       }
-    );
+    }
+
+    return stravaData;
+  }
+
+
+  UserPlan.query({ user_id: userId, active: true }).$promise.then((userPlans) => {
+    stravaIndex.planId = userPlans[0].id;
+    stravaIndex.userDays = userPlans[0].user_days;
+    if(accessToken){
+      return StravaService
+        .activityIndex(accessToken);
+    }
+  })
+  .then((stravaData) => {
+    stravaIndex.allActivities = matchUserDays(stravaData || []);
+
+    const completedDays = stravaIndex.userDays.filter((day) => {
+      return day.completed;
+    });
+
+    stravaIndex.allActivities.concat(completedDays);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
   function markComplete(planId, dayId, stravaId){
 
@@ -48,6 +57,5 @@ function StravaIndexController($http, StravaService, $auth, User, UserPlan, Day,
       });
     });
   }
-
   stravaIndex.markComplete = markComplete;
 }

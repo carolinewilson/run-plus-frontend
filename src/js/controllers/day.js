@@ -25,7 +25,7 @@ function DaysShowController(Day, $state, $window, StravaService) {
 
 
     StravaService
-      .getActivity(accessToken, stravaActivityId)
+      .activityShow(accessToken, stravaActivityId)
       .then(
         successResponse => {
           daysShow.stravaData = successResponse;

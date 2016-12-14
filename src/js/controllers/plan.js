@@ -20,7 +20,7 @@ function PlansIndexController(User, $auth) {
 }
 
 PlansShowController.$inject = ['UserPlan' ,'$state','$window'];
-function PlansShowController(UserPlan, $state, $window, $auth) {
+function PlansShowController(UserPlan, $state, $window) {
   const plansShow = this;
   const moment = $window.moment;
 
@@ -43,7 +43,10 @@ function PlansShowController(UserPlan, $state, $window, $auth) {
 
       if (start > today) {
         plansShow.plan.future = true;
+      } else {
+        plansShow.plan.future = false;
       }
+      console.log(plansShow.plan.future);
     }
 
     // Check if user has Strava account
@@ -74,7 +77,7 @@ function PlansShowController(UserPlan, $state, $window, $auth) {
     plansShow.data = [plansShow.targetData, plansShow.actualData];
 
     plansShow.plan.user_days.forEach((day) => {
-      // Find current week 
+      // Find current week
       const date =  moment(day.date).format('YYYY-MM-DD');
       const today = moment().format('YYYY-MM-DD');
       if (date === today) {

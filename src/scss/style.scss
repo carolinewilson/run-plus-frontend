@@ -47,6 +47,11 @@ body {
     height: 500px;
     width: 500px;
   }
+  .map-summary {
+    height: 300px;
+    width: 500px;
+    overflow: hidden;
+  }
   .complete {
     background-color: lightgrey;
     color: red;

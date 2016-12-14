@@ -1,10 +1,12 @@
 angular.module('finalProject')
   .controller('MainController', MainController);
 
-MainController.$inject = ['$auth','$state','User','UserPlan', '$window', '$scope'];
-function MainController($auth, $state, User, UserPlan, $window, $scope){
+MainController.$inject = ['$auth','$state','User','UserPlan', '$window', '$scope','$location','$anchorScroll'];
+function MainController($auth, $state, User, UserPlan, $window, $scope,$location,$anchorScroll){
   const main = this;
   const moment = $window.moment;
+  $location.hash('top');
+  $anchorScroll();
 
   main.isLoggedIn = $auth.isAuthenticated;
   main.hasActivePlan = false;

@@ -1,17 +1,25 @@
-<h1>Activities</h1>
-<ul>
-  <li ng-repeat="activity in stravaIndex.data" ng-if="activity.type === 'Run'">
-    <p>{{ activity.start_date | date: dd}}</p>
-    <p>{{ activity.name }}</p>
-    <p>{{ (activity.distance / 1000) * 0.621371 | number: 1 }} mi</p>
+<section>
+  <header>
     <ul>
-      <li ng-repeat="userDay in stravaIndex.userDays" ng-if="userDay.date === activity.start_date">
-        <p ng-if="userDay.exercise">{{ userDay.exercise.name }}</p>
-        <p ng-if="!userDay.exercise">Rest day</p>
-        <button ng-if="userDay.exercise && !userDay.completed" ui-sref="daysShow({planId: stravaIndex.userPlanId, dayId: userDay.id})">View Planned Activity</button>
-        <button ng-if="userDay.exercise && userDay.completed" ui-sref="daysShow({planId: stravaIndex.userPlanId, dayId: userDay.id, stravaId: activity.id})">View Activity</button>
-        <button  ng-if="userDay.exercise && !userDay.completed" ng-click="stravaIndex.markComplete(stravaIndex.userPlanId, userDay.id, activity.id)">Mark as done</button>
+      <li>
+        <a ui-sref="plansShow({ id: stravaIndex.planId})">
+          <img src="../images/arrow-left.png" class="left-arrow">
+        </a>
       </li>
+      <li>ACTIVITY FEED</li>
     </ul>
-  </li>
-</ul>
+  </header>
+  <button>SYNC WITH STRAVA</button>
+  <ul>
+    <li ng-repeat="activity in stravaIndex.allActivities" ng-if="activity.type === 'Run'">
+      <p>{{ activity.start_date | date: dd}}</p>
+      <p ng-if="activity.userDay">MATCH {{ activity.userDay }}</p>
+      <p>{{ activity.name }}<span ng-if="activity.location_city">, {{ activity.location_city }}</span></p>
+      <p>{{ activity.distance }} mi</p>
+      <p>{{ activity.elapsed_hours }}:{{ activity.elapsed_minutes }}:{{ activity.elapsed_seconds}}</p>
+      <div ng-if="activity.map.summary_polyline" class="map-summary">
+        <google-map ng-if="activity.map.summary_polyline" data="activity.map.summary_polyline" ></google-map>
+      </div>
+    </li>
+  </ul>
+</section>
