@@ -1,15 +1,15 @@
 angular.module('finalProject')
   .service('StravaService', StravaService);
 
-StravaService.$inject = ['$http', '$window'];
-function StravaService($http, $window) {
+StravaService.$inject = ['$http', '$window', 'API_URL'];
+function StravaService($http, $window, API_URL) {
   const moment = $window.moment;
 
   function activityIndex(accessToken) {
 
     return $http({
       method: 'GET',
-      url: 'http://localhost:3000/api/strava',
+      url: `${API_URL}/strava`,
       params: {
         accessToken
       }
