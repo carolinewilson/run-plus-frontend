@@ -23,7 +23,7 @@ ul {
 
     .edit, .right-arrow {
       position: absolute;
-      top: 20%;
+      top: 10%;
       right: 30px;
     }
     .left-arrow {
@@ -62,5 +62,5 @@ input[type=date] {
   padding-left: 10px;
 }
 input[type=radio] {
-  width: 0;
+  width: 100%;
 }

@@ -197,9 +197,11 @@ body {
     text-transform: uppercase;
 
     h1 {
-      transform: translate(12%, 85%);
+      position: fixed;
+      left: 30px;
+      bottom: 190px;
       font-size: 80px;
-      font-weight: bold;
+      font-weight: bolder;
     }
 
     ul[dnd-list] {
@@ -207,20 +209,25 @@ body {
       bottom: 0;
       width: 100%;
     }
-    // button {
-    //   position: absolute;
-    //   left: 0;
-    //   width: 100%;
-    //   margin: 0;
-    //   border: none;
-    //   &.primary {
-    //     bottom: 0;
-    //   }
-    //   &.secondary {
-    //     bottom: 60px;
-    //     background-color: white;
-    //   }
-    // }
+    button {
+      &.primary {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        a {
+          color: white;
+        }
+      }
+      &.secondary {
+        position: fixed;
+        bottom: 60px;
+        left: 0;
+        border: none;
+        a {
+          color: $brand-red;
+        }
+      }
+    }
   }
 }
   // ---------- Drag & Dop Styling ---------- //

@@ -20,7 +20,7 @@
           <p>{{activity.exercise.name}}</p>
           <button class="secondary wide" ui-sref="daysShow({planId: stravaIndex.planId, dayId: activity.id})">View Day</button>
         </div>
-        <div ng-if="!activity.exercise" class="box">
+        <div ng-if="!activity.exercise && activity.userDay.exercise || !activity.exercise && activity.elapsed_hours" class="box">
           <h1>{{ activity.start_date | date: dd}}</h1>
           <div ng-if="activity.userDay">
             <p ng-if="!activity.userDay.exercise">REST DAY</p>

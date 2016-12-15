@@ -26,22 +26,28 @@
   <div>
     <ul dnd-list>
       <li ng-if="plansShow.plan.active && plansShow.plan.status === 'current' && plansShow.currentWeek">
-        <a ui-sref="weeksShow({planId: plansShow.plan.id, weekId: plansShow.currentWeek})">
-          <h3>
-              This week
-          </h3>
-          <img src="../images/arrow-right.png" class="right-arrow">
-        </a>
+        <div class="conatiner">
+          <a ui-sref="weeksShow({planId: plansShow.plan.id, weekId: plansShow.currentWeek})">
+            <h3>
+                This week
+            </h3>
+            <img src="../images/arrow-right.png" class="right-arrow">
+          </a>
+        </div>
       </li>
       <li ng-if="plansShow.plan.status === 'future' || (plansShow.plan.active && !plansShow.currentWeek && plansShow.plan.status === 'future')">
-        <h3>
-            Plan starts on {{ plansShow.plan.start_date | date: dd }}
-        </h3>
+        <div class="container">
+          <h3>
+              Plan starts on {{ plansShow.plan.start_date | date: dd }}
+          </h3>
+        </div>
       </li>
       <li ng-if="!plansShow.plan.active || (plansShow.plan.active && plansShow.plan.status === 'past')">
-        <h3>
-            Plan finished
-        </h3>
+        <div class="container">
+          <h3>
+              Plan finished
+          </h3>
+        </div>
       </li>
     </ul>
   </div>
@@ -49,10 +55,12 @@
   <div>
     <ul dnd-list>
       <li>
-        <a ui-sref="stravaIndex">
-          <h3>Activity Feed</h3>
-          <img src="../images/arrow-right.png" class="right-arrow">
-        </a>
+        <div class="container">
+          <a ui-sref="stravaIndex">
+            <h3>Activity Feed</h3>
+            <img src="../images/arrow-right.png" class="right-arrow">
+          </a>
+        </div>
       </li>
     </ul>
   </div>
@@ -66,21 +74,25 @@
   <div>
     <ul dnd-list>
       <li>
-        <a ui-sref="daysIndex({id: plansShow.plan.id})">
-          <h3>View full plan</h3>
-          <img src="../images/arrow-right.png" class="right-arrow">
-        </a>
+        <div class="container">
+          <a ui-sref="daysIndex({id: plansShow.plan.id})">
+            <h3>View full plan</h3>
+            <img src="../images/arrow-right.png" class="right-arrow">
+          </a>
+        </div>
       </li>
     </ul>
   </div>
   <div>
     <ul dnd-list>
       <li>
-        <a ui-sref="plansEdit({id: plansShow.plan.id})">
-          <h3 ng-if="plansShow.plan.active">End plan</h3>
-          <h3 ng-if="!plansShow.plan.active">Delete plan</h3>
-          <img src="../images/arrow-right.png" class="right-arrow">
-        </a>
+        <div class="container">
+          <a ui-sref="plansEdit({id: plansShow.plan.id})">
+            <h3 ng-if="plansShow.plan.active">End plan</h3>
+            <h3 ng-if="!plansShow.plan.active">Delete plan</h3>
+            <img src="../images/arrow-right.png" class="right-arrow">
+          </a>
+        </div>
       </li>
     </ul>
   </div>

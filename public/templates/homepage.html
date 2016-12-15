@@ -1,13 +1,13 @@
 <section class="homepage">
   <h1>RUN <sup>+</sup></h1>
   <div ng-if="!main.isLoggedIn()">
-    <button class="secondary" ui-sref="register">Create account</a>
-    <button class="primary" ui-sref="login">Sign in</button>
+    <button class="secondary wide" ui-sref="register">Create account</a>
+    <button class="primary wide" ui-sref="login">Sign in</button>
   </div>
   <div ng-if="main.isLoggedIn()">
-    <button class="secondary" ng-if="!!main.activePlan"><a ui-sref="daysShow({planId: main.activePlan, dayId: main.dayId })">Today</a>
+    <button class="secondary wide" ng-if="!!main.activePlan"><a ui-sref="daysShow({planId: main.activePlan, dayId: main.dayId })">Today</a>
     </button>
-    <button class="primary">
+    <button class="primary wide">
       <a ui-sref="plansIndex">Plans</a>
     </button>
   </div>

@@ -1,20 +1,22 @@
 <section>
   <header class="top-nav">
     <div class="container">
-      <h2>{{ usersShow.user.username }}</h2>
+      <h2>profile</h2>
     </div>
   </header>
   <img ng-src="{{ usersShow.user.image }}">
-  <button ui-sref="usersEdit({ id: usersShow.user.id })">Edit</button>
+  <div class="container center">
+    <h1>{{ usersShow.user.username }}</h1>
+    <h3>{{ usersShow.user.email }}</h3>
 
-  <h4>{{ usersShow.user.email }}</h4>
-
-  <div>
-    <button ng-click="usersShow.authenticateStrava()">Sync with Strava</button>
-  </div>
-  <div>
-    <button ng-click="usersShow.logout()">Logout</button>
-
-    <button ng-click="usersShow.delete()">Delete Accout</button>
+    <div>
+      <button class="primary wide" ng-click="usersShow.authenticateStrava()">Sync with Strava</button>
+    </div>
+    <hr>
+    <div>
+      <button class="secondary wide" ng-click="usersShow.logout()">Logout</button>
+      <hr>
+      <button class="secondary wide" ng-click="usersShow.delete()">Delete Accout</button>
+    </div>
   </div>
 </section>

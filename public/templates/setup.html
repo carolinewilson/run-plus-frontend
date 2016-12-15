@@ -6,7 +6,7 @@
 <section>
   <div class="container setup">
     <form novalidate ng-submit="setupPlan.create()">
-      <div class="race-distance" ng-class="{ hidden: !setupPlan.distanceVisible }">
+      <div ng-class="{ hidden: !setupPlan.distanceVisible }">
         <h1>Choose your distance</h1>
         <label ng-click="setupPlan.showActivity()">
           <input type="radio" name="length" ng-model="setupPlan.length" value="5km"><h3>5km</h3>        </label>
@@ -31,29 +31,29 @@
         </label>
       </div>
 
-      <div class="race-date" ng-class="{ hidden: !setupPlan.dateVisible }">
+      <div ng-class="{ hidden: !setupPlan.dateVisible }">
         <h1>Race Date</h1>
         <p>You need 6 weeks min. to train</p>
         <input type="date" name="end_date" ng-model="setupPlan.end_date">
 
         <input type="text" ng-model="setupPlan.name" name="name" placeholder="Race name (optional)">
-        <a disabled class="btn secondary wide" ng-click="setupPlan.showPlan()">Next</a>
+        <p class="btn secondary wide" ng-click="setupPlan.showPlan()">Next</p>
       </div>
 
       <div class="race-plan" ng-class="{ hidden: !setupPlan.planVisible }">
         <h1>Your plan</h1>
         <ul>
-          <li>Race distance: {{ setupPlan.length }}</li>
-          <li>Level: {{ setupPlan.level }}</li>
-          <li>Race date: {{ setupPlan.end_date | date: "dd MMM yyyy" }}</li>
-          <li>Race name: {{ setupPlan.name }}</li>
+          <li><h3>Race distance: {{ setupPlan.length }}</h3></li>
+          <li><h3>Level: {{ setupPlan.level }}</h3></li>
+          <li><h3>Race date: {{ setupPlan.end_date | date: "dd MMM yyyy" }}</h3></li>
+          <li><h3>Race name: {{ setupPlan.name }}</h3></li>
         </ul>
         <button class="primary wide">Build my plan</button>
       </div>
 
 
       <hr>
-      <button class="secondary wide" ng-click="setupPlan.showDistance()">Start over</button>
+      <p class="btn secondary wide" ng-click="setupPlan.showDistance()">Start over</p>
     </form>
   </div>
 </section>
