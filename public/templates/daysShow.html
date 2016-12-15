@@ -1,31 +1,36 @@
 <section>
-  <header>
-    <ul>
-      <li>
-        <a ui-sref="weeksShow({planId: daysShow.planId, weekId: daysShow.day.week })">
-          <img src="../images/arrow-left.png" class="left-arrow">
-        </a>
-      </li>
-      <li>{{ daysShow.day.date | date: dd }}</li>
-    </ul>
+  <header class="top-nav">
+    <div class="container">
+      <ul>
+        <li>
+          <a ui-sref="weeksShow({planId: daysShow.planId, weekId: daysShow.day.week })">
+            <img src="../images/arrow-left.png" class="left-arrow">
+          </a>
+        </li>
+        <li>{{ daysShow.day.date | date: dd }}</li>
+      </ul>
+    </div>
   </header>
-  <div ng-if="!daysShow.day.exercise">
-    <h1>Rest day</h1>
-    <button ui-sref="weeksShow({planId: daysShow.planId, weekId: daysShow.day.week })">View Week</button>
-  </div>
-  <div ng-if="daysShow.day.exercise">
-    <h3>{{ daysShow.day.exercise.name }}</h3>
-    <h1>{{ daysShow.day.exercise.miles }} miles</h1>
-    <button ng-if="daysShow.day.completed" disabled="true" class="disabled">Complete</button>
-    <button ng-if="!daysShow.day.completed" ng-click="daysShow.markDone()">Completed</button>
-  </div>
-  <div ng-if="daysShow.stravaData">
-    <h3>{{ daysShow.stravaData.name }}</h3>
-    <p>{{ daysShow.stravaData.location_city }}, {{ daysShow.stravaData.location_country }}</p>
-    <p>DISTANCE</p>
-    <p>{{ daysShow.stravaData.distance }} mi</p>
-    <p>TIME</p>
-    <p>{{ daysShow.stravaData.elapsed_minutes }}:{{ daysShow.stravaData.elapsed_seconds | limitTo:2 }}</p>
-    <google-map data="daysShow.stravaData.map.polyline" ng-if="daysShow.stravaData"></google-map>
+  <div class="container day">
+    <div ng-if="!daysShow.day.exercise">
+      <h1>Rest day</h1>
+      <button ui-sref="weeksShow({planId: daysShow.planId, weekId: daysShow.day.week })">View Week</button>
+    </div>
+    <div ng-if="daysShow.day.exercise">
+      <h2>{{ daysShow.day.exercise.name }}</h2>
+      <p>{{ daysShow.day.exercise.description }}</p>
+      <h1><span class="number">{{ daysShow.day.exercise.miles }} mi</span></h1>
+      <button ng-if="daysShow.day.completed" disabled="true" class="disabled">Complete</button>
+      <button ng-if="!daysShow.day.completed" ng-click="daysShow.markDone()">Mark as Completed</button>
+    </div>
+    <div ng-if="daysShow.stravaData">
+      <h3>{{ daysShow.stravaData.name }}</h3>
+      <p>{{ daysShow.stravaData.location_city }}, {{ daysShow.stravaData.location_country }}</p>
+      <p>DISTANCE</p>
+      <p>{{ daysShow.stravaData.distance }} mi</p>
+      <p>TIME</p>
+      <p>{{ daysShow.stravaData.elapsed_minutes }}:{{ daysShow.stravaData.elapsed_seconds | limitTo:2 }}</p>
+      <google-map data="daysShow.stravaData.map.polyline" ng-if="daysShow.stravaData"></google-map>
+    </div>
   </div>
 </section>

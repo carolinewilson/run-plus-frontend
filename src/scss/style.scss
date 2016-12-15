@@ -18,6 +18,13 @@ body {
   h3 {
     font-size: 18px;
   }
+  a {
+    text-decoration: none;
+    color: FireBrick;
+  }
+  a:hover {
+    color: black;
+  }
   header.top-nav {
     height: 60px;
     background-color: #f3f3f3;
@@ -85,22 +92,26 @@ body {
         width: 49%;
         margin: 0 auto;
         text-align: center;
-
-        span.number {
-          font-size: 60px;
-        }
-        span.text {
-          display: block;
-          text-transform: uppercase;
-          margin-bottom: 10px;
-        }
       }
     }
-
+    span.number {
+      font-size: 60px;
+    }
+    span.text {
+      display: block;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
     .chart {
       margin-top: 30px;
     }
 
+    .day {
+      text-align: center;
+      button a {
+        background-color: red;
+      }
+    }
     .divider {
       position: absolute;
       left: 30px;
@@ -111,7 +122,6 @@ body {
     }
 
   }
-
 
   ul {
     list-style: none;
@@ -130,16 +140,6 @@ body {
         left: 10px;
       }
     }
-  }
-  button a{
-    color: white;
-  }
-  a {
-    text-decoration: none;
-    color: FireBrick;
-  }
-  a:hover {
-    color: black;
   }
 
   footer {
@@ -186,7 +186,6 @@ body {
     background-size: cover;
     background-position: center;
     height: 100vh;
-
     text-align: center;
     color: white;
     text-transform: uppercase;
