@@ -186,9 +186,22 @@ body {
     background-size: cover;
     background-position: center;
     height: 100vh;
+    top: 0;
     text-align: center;
     color: white;
     text-transform: uppercase;
+
+    h1 {
+      transform: translate(12%, 85%);
+      font-size: 80px;
+      font-weight: bold;
+    }
+
+    ul[dnd-list] {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
   }
 
   // ---------- Drag & Dop Styling ---------- //
