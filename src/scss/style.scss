@@ -1,33 +1,42 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins');
+@import 'partials/brand';
+@import 'partials/defaults';
+@import 'partials/buttons';
+
+* {
+  box-sizing: border-box;
+}
 
 body {
-  top: 0;
-  background-color: white;
-  color: FireBrick;
-  font-family: 'Poppins', sans-serif;
-
   .left-arrow, .right-arrow, .edit {
     width: 40px;
   }
-  h1 {
-    font-size: 30px;
+
+  .setup {
+    .hidden {
+      display: none;
+    }
+    h3 {
+      transform: translateY(-100%);
+    }
+
+    .btn {
+      border: 1px solid $brand-red;
+      font-size: 15px;
+      font-weight: bold;
+      padding: 18px 0;
+      margin: 10px 0;
+      display: block;
+      text-align: center;
+      letter-spacing: 2px;
+      height: 60px;
+      text-transform: uppercase;
+    }
   }
-  h2 {
-    font-size: 20px;
-  }
-  h3 {
-    font-size: 18px;
-  }
-  a {
-    text-decoration: none;
-    color: FireBrick;
-  }
-  a:hover {
-    color: black;
-  }
+
   header.top-nav {
     height: 60px;
-    background-color: #f3f3f3;
+    background-color: $brand-grey;
     position: fixed;
     z-index: 1;
     top:0;
@@ -85,29 +94,34 @@ body {
         width: 100%;
         border-radius: 0;
         height: 60px;
-        font-family: 'Poppins', sans-serif;
-      }
-
-      button {
-        background-color: FireBrick;
-        color: white;
+        font-family: $brand-font;
       }
     }
   }
-
+  .box {
+    background-color: $brand-grey;
+    padding: 10px;
+    width: 100%;
+  }
+  .google-map {
+    width: 100%;
+    height: 200px;
+  }
+  .center {
+    text-align: center;
+  }
   .plan-stats {
-    background-color: #f3f3f3;
+    background-color: $brand-grey;
     margin: 20px 0;
-
-    .stats-left {
-      border-right: 1px solid white;
-    }
-    .stats-left, .stats-right {
-      display: inline-block;
-      width: 49%;
-      margin: 0 auto;
-      text-align: center;
-    }
+  }
+  .stats-left {
+    border-right: 1px solid white;
+  }
+  .stats-left, .stats-right {
+    display: inline-block;
+    width: 49%;
+    margin: 0 auto;
+    text-align: center;
   }
   span.number {
     font-size: 60px;
@@ -136,36 +150,19 @@ body {
     }
   }
 
-  ul {
-    list-style: none;
-    li {
-      display: inline;
-      margin: 0 20px;
-
-      .edit, .right-arrow {
-        position: absolute;
-        top: 20%;
-        right: 30px;
-      }
-      .left-arrow {
-        position: absolute;
-        top: 10px;
-        left: 10px;
-      }
-    }
-  }
 
   footer {
     position: fixed;
     bottom: 0;
     width: 100%;
     height: 60px;
-    background-color: #f3f3f3;
+    background-color: $brand-grey;
     ul {
       list-style: none;
       margin: 0 auto;
       li {
         display: inline-block;
+        margin: 0 10px;
         h2 {
           text-align: center;
           transform: translateY(75%);
@@ -175,22 +172,17 @@ body {
     }
   }
 
-  .google-map {
-    height: 500px;
-    width: 500px;
-  }
   .map-summary {
-    height: 300px;
-    width: 500px;
+    height: 100%;
+    width: 100%;
     overflow: hidden;
   }
   .complete {
-    // background-color: #f3f3f3;
+    // background-color: $brand-red;
     color: red;
   }
-
   .disabled {
-    background-color: #f3f3f3;
+    background-color: $brand-grey;
   }
 
   .homepage {
@@ -215,6 +207,20 @@ body {
       bottom: 0;
       width: 100%;
     }
+    // button {
+    //   position: absolute;
+    //   left: 0;
+    //   width: 100%;
+    //   margin: 0;
+    //   border: none;
+    //   &.primary {
+    //     bottom: 0;
+    //   }
+    //   &.secondary {
+    //     bottom: 60px;
+    //     background-color: white;
+    //   }
+    // }
   }
 }
   // ---------- Drag & Dop Styling ---------- //

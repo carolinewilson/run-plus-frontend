@@ -1,0 +1,66 @@
+h1 {
+  font-size: 30px;
+}
+h2 {
+  font-size: 20px;
+}
+h3 {
+  font-size: 18px;
+}
+a {
+  text-decoration: none;
+  color: $brand-red;
+}
+a:hover {
+  color: black;
+}
+
+ul {
+  list-style: none;
+  li {
+    display: inline;
+    margin: 0 20px;
+
+    .edit, .right-arrow {
+      position: absolute;
+      top: 20%;
+      right: 30px;
+    }
+    .left-arrow {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
+  }
+}
+body {
+  top: 0;
+  background-color: white;
+  color: $brand-red;
+  font-family: $brand-font;
+}
+input {
+  border: none;
+  border-radius: 0;
+  font-family: $brand-font;
+  font-size: 15px;
+  height: 60px;
+  width: 100%;
+  border-bottom: 2px solid black;
+}
+input[type=text] {
+  height: 60px;
+  border: none;
+  border-radius: 0;
+  border-bottom: 2px solid black;
+  &:focus {
+    border-color: $brand-grey;
+  }
+}
+input[type=date] {
+  letter-spacing: 1px;
+  padding-left: 10px;
+}
+input[type=radio] {
+  width: 0;
+}

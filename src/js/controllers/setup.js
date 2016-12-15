@@ -14,5 +14,39 @@ function SetupController(UserPlan, $state, $window) {
     });
   }
 
+  setupPlan.distanceVisible = true;
+  setupPlan.activityVisible = false;
+  setupPlan.dateVisible = false;
+  setupPlan.planVisible = false;
+
+  function showDistance(){
+    setupPlan.distanceVisible = true;
+    setupPlan.activityVisible = false;
+    setupPlan.dateVisible = false;
+    setupPlan.planVisible = false;
+  }
+  function showActivity(){
+    setupPlan.distanceVisible = false;
+    setupPlan.activityVisible = true;
+    setupPlan.dateVisible = false;
+    setupPlan.planVisible = false;
+  }
+  function showDate(){
+    setupPlan.distanceVisible = false;
+    setupPlan.activityVisible = false;
+    setupPlan.dateVisible = true;
+    setupPlan.planVisible = false;
+  }
+  function showPlan(){
+    setupPlan.distanceVisible = false;
+    setupPlan.activityVisible = false;
+    setupPlan.dateVisible = false;
+    setupPlan.planVisible = true;
+  }
+
+  setupPlan.showActivity = showActivity;
+  setupPlan.showDate = showDate;
+  setupPlan.showPlan = showPlan;
+  setupPlan.showDistance = showDistance;
   setupPlan.create = create;
 }

@@ -1,5 +1,5 @@
-<section>
-  <header>
+<header class="top-nav">
+  <div class="container">
     <ul>
       <li>
         <a ui-sref="plansShow({id: plansNew.activePlan.id})">
@@ -8,13 +8,16 @@
       </li>
       <li>{{ plansNew.activePlan.name }}</li>
     </ul>
-  </header>
-  <div class="">
+  </div>
+</header>
+<section>
+  <div class="container">
     <h1>You can only have one active plan at a time.</h1>
     <p><em>Do you want to end your current plan?</em></p>
     <p>{{ plansNew.activePlan.name }}</p>
     <p>Race date: {{ plansNew.activePlan.end_date | date: dd-mmm-yyyy }}</p>
-    <button ng-click="plansNew.endPlan(plansNew.activePlan.id)">End</button>
-    <button ui-sref="plansShow({id: plansNew.activePlan.id})">Back</button>
+    <button class="primary wide" ng-click="plansNew.endPlan(plansNew.activePlan.id)">End</button>
+    <hr>
+    <button class="secondary wide" ui-sref="plansShow({id: plansNew.activePlan.id})">Back</button>
   </div>
 </section>

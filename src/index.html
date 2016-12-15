@@ -4,10 +4,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <meta name="google-site-verification" content="krJk_jo4uCXn02lj-99Gli2_PunympFJVa0ZXn8Qz30" />
-    <title>Final Project</title>
+    <title>Run +</title>
     <link rel="stylesheet" href="/css/vendor.css">
     <link rel="stylesheet" href="/css/style.css">
-    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyB82BPkatZ3Egq8auBrOqtOQdKcPZRDMZs"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB82BPkatZ3Egq8auBrOqtOQdKcPZRDMZs"></script>
     <script>
       var iosDragDropShim = { holdToDrag: 300 }
     </script>
@@ -18,20 +18,22 @@
     <script src="/js/app.js" charset="utf-8"></script>
   </head>
   <body ng-controller="MainController as main">
-    <div id="top"></div>
+    <div></div>
     <main ui-view></main>
     <footer ng-show="uiRouterState.current.name != 'homepage'">
-      <div class="container">
-        <ul>
-          <li ng-if="!main.isLoggedIn()"><a ui-sref="register"><h2>Create Account</h2></a></li>
-          <li ng-if="!main.isLoggedIn()"><a ui-sref="login"><h2>Sign In</h2></a></li>
-          <li ng-if="main.isLoggedIn()"><a ui-sref="plansIndex"><h2>Plans</h2></a></li>
-          <li ng-if="main.isLoggedIn() && !main.activePlan"><a ui-sref="setup"><h2>New Plan</h2></a></li>
-          <li ng-if="!!main.activePlan && main.planStarted"><a ui-sref="daysShow({planId: main.activePlan, dayId: main.dayId })"><h2>Today</h2></a></li>
-          <li ng-if="main.isLoggedIn() && main.activePlan"><a ui-sref="stravaIndex"><h2>Feed</h2></a></li>
-          <li ng-if="main.isLoggedIn()"><a ng-click="main.getUserId()"><h2>Profile</h2></a></li>
-        </ul>
-      </div>
+      <center>
+        <div class="container">
+          <ul>
+            <li ng-if="!main.isLoggedIn()"><a ui-sref="register"><h2>Create Account</h2></a></li>
+            <li ng-if="!main.isLoggedIn()"><a ui-sref="login"><h2>Sign In</h2></a></li>
+            <li ng-if="main.isLoggedIn()"><a ui-sref="plansIndex"><h2>Plans</h2></a></li>
+            <li ng-if="main.isLoggedIn() && !main.activePlan"><a ui-sref="setup"><h2>New Plan</h2></a></li>
+            <li ng-if="!!main.activePlan && main.planStarted"><a ui-sref="daysShow({planId: main.activePlan, dayId: main.dayId })"><h2>Today</h2></a></li>
+            <li ng-if="main.isLoggedIn() && main.activePlan"><a ui-sref="stravaIndex"><h2>Feed</h2></a></li>
+            <li ng-if="main.isLoggedIn()"><a ng-click="main.getUserId()"><h2>Profile</h2></a></li>
+          </ul>
+        </div>
+      </center>
     </footer>
   </body>
 </html>

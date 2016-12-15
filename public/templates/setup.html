@@ -1,51 +1,59 @@
+<header class="top-nav">
+  <div class="container">
+    <h2>Setup</h2>
+  </div>
+</header>
 <section>
-  <h1>Plan Setup</h1>
+  <div class="container setup">
+    <form novalidate ng-submit="setupPlan.create()">
+      <div class="race-distance" ng-class="{ hidden: !setupPlan.distanceVisible }">
+        <h1>Choose your distance</h1>
+        <label ng-click="setupPlan.showActivity()">
+          <input type="radio" name="length" ng-model="setupPlan.length" value="5km"><h3>5km</h3>        </label>
+        <label ng-click="setupPlan.showActivity()">
+          <input type="radio" name="length" ng-model="setupPlan.length" value="10km"><h3>10km</h3>
+        </label>
+        <label ng-click="setupPlan.showActivity()">
+          <input type="radio" name="length" ng-model="setupPlan.length" value="Half Marathon"><h3>Half Marathon</h3>
+        </label>
+      </div>
 
-  <form novalidate ng-submit="setupPlan.create()">
-    <div>
-      <h2>Choose your distance</h2>
-      <label>
-        <input type="radio" name="length" ng-model="setupPlan.length" value="5km">5km
-      </label>
-      <label>
-        <input type="radio" name="length" ng-model="setupPlan.length" value="10km">10km
-      </label>
-      <label>
-        <input type="radio" name="length" ng-model="setupPlan.length" value="Half Marathon">Half Marathon
-      </label>
-    </div>
+      <div ng-class="{ hidden: !setupPlan.activityVisible }">
+        <h1>Activity level</h1>
+        <label ng-click="setupPlan.showDate()">
+          <input type="radio" name="level" ng-model="setupPlan.level" value="Couch to 5km"><h3>Couch to 5km</h3>
+        </label>
+        <label ng-click="setupPlan.showDate()">
+          <input type="radio" name="level" ng-model="setupPlan.level" value="Current Runner"><h3>Current Runner</h3>
+        </label>
+        <label ng-click="setupPlan.showDate()">
+          <input type="radio" name="level" ng-model="setupPlan.level" value="Advanced Runner"><h3>Advanced Runner</h3>
+        </label>
+      </div>
 
-    <div>
-      <h2>Activity level</h2>
-      <label>
-        <input type="radio" name="level" ng-model="setupPlan.level" value="Couch to 5km">Couch to 5km
-      </label>
-      <label>
-        <input type="radio" name="level" ng-model="setupPlan.level" value="Current Runner">Current Runner
-      </label>
-      <label>
-        <input type="radio" name="level" ng-model="setupPlan.level" value="Advanced Runner">Advanced Runner
-      </label>
-    </div>
+      <div class="race-date" ng-class="{ hidden: !setupPlan.dateVisible }">
+        <h1>Race Date</h1>
+        <p>You need 6 weeks min. to train</p>
+        <input type="date" name="end_date" ng-model="setupPlan.end_date">
 
-    <div>
-      <h2>Race Date</h2>
-      <p>You need 6 weeks min. to train</p>
-      <input type="date" name="end_date" ng-model="setupPlan.end_date">
+        <input type="text" ng-model="setupPlan.name" name="name" placeholder="Race name (optional)">
+        <a disabled class="btn secondary wide" ng-click="setupPlan.showPlan()">Next</a>
+      </div>
 
-      <input type="text" ng-model="setupPlan.name" name="name" placeholder="Race name (optional)">
-    </div>
+      <div class="race-plan" ng-class="{ hidden: !setupPlan.planVisible }">
+        <h1>Your plan</h1>
+        <ul>
+          <li>Race distance: {{ setupPlan.length }}</li>
+          <li>Level: {{ setupPlan.level }}</li>
+          <li>Race date: {{ setupPlan.end_date | date: "dd MMM yyyy" }}</li>
+          <li>Race name: {{ setupPlan.name }}</li>
+        </ul>
+        <button class="primary wide">Build my plan</button>
+      </div>
 
-    <div>
-      <h2>Your plan</h2>
-      <ul>
-        <li>Race distance: {{ setupPlan.length }}</li>
-        <li>Level: {{ setupPlan.level }}</li>
-        <li>Race date: {{ setupPlan.end_date | date: "dd MMM yyyy" }}</li>
-        <li>Race name: {{ setupPlan.name }}</li>
-      </ul>
-    </div>
 
-    <button>Build my plan</button>
-  </form>
+      <hr>
+      <button class="secondary wide" ng-click="setupPlan.showDistance()">Start over</button>
+    </form>
+  </div>
 </section>

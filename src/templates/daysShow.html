@@ -14,22 +14,30 @@
   <div class="container day">
     <div ng-if="!daysShow.day.exercise">
       <h1>Rest day</h1>
-      <button ui-sref="weeksShow({planId: daysShow.planId, weekId: daysShow.day.week })">View Week</button>
+      <button class="secondary wide" ui-sref="weeksShow({planId: daysShow.planId, weekId: daysShow.day.week })">View Week</button>
     </div>
     <div ng-if="daysShow.day.exercise">
       <h2>{{ daysShow.day.exercise.name }}</h2>
       <p>{{ daysShow.day.exercise.description }}</p>
       <h1><span class="number">{{ daysShow.day.exercise.miles }} mi</span></h1>
-      <button ng-if="daysShow.day.completed" disabled="true" class="disabled">Complete</button>
-      <button ng-if="!daysShow.day.completed" ng-click="daysShow.markDone()">Mark as Completed</button>
+      <button class="primary wide" ng-if="daysShow.day.completed" disabled="true" class="disabled">Already Completed</button>
+      <button class="primary wide" ng-if="!daysShow.day.completed" ng-click="daysShow.markDone()">Mark as Completed</button>
     </div>
     <div ng-if="daysShow.stravaData">
-      <h3>{{ daysShow.stravaData.name }}</h3>
-      <p>{{ daysShow.stravaData.location_city }}, {{ daysShow.stravaData.location_country }}</p>
-      <p>DISTANCE</p>
-      <p>{{ daysShow.stravaData.distance }} mi</p>
-      <p>TIME</p>
-      <p>{{ daysShow.stravaData.elapsed_minutes }}:{{ daysShow.stravaData.elapsed_seconds | limitTo:2 }}</p>
+      <hr>
+    </div>
+    <div class="box" ng-if="daysShow.stravaData">
+      <h1>{{ daysShow.stravaData.name }}</h1>
+      <div class="plan-stats">
+        <div class="stats-left">
+          <span class="number">{{ daysShow.stravaData.distance }}</span>
+          <span class="text">miles</span>
+        </div>
+        <div class="stats-right">
+          <span class="number">{{ daysShow.stravaData.elapsed_minutes }}:{{ daysShow.stravaData.elapsed_seconds | limitTo:2 }}</span>
+          <span class="text">time</span>
+        </div>
+      </div>
       <google-map data="daysShow.stravaData.map.polyline" ng-if="daysShow.stravaData"></google-map>
     </div>
   </div>

@@ -1,0 +1,24 @@
+button {
+  border-radius: 0;
+  height: 60px;
+  font-family: $brand-font;
+  &.primary {
+    background-color: $brand-red;
+    color: white;
+    border: 1px solid $brand-red;
+  }
+  &.secondary {
+    background-color: white;
+    color: $brand-red;
+    border: 1px solid $brand-red;
+  }
+  &.center {
+    margin: 50px 0;
+    width: 80%;
+    transform: translateX(12%);
+  }
+  &.wide {
+    width: 100%;
+    margin: 0;
+  }
+}

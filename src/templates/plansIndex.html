@@ -6,10 +6,10 @@
   </header>
 
   <div>
-    <div class="container">
+    <div class="container center">
       <h1>Current Plan</h1>
+      <p ng-if="!plansIndex.hasActivePlan">You don't have any active plans.</p>
     </div>
-    <p ng-if="!plansIndex.hasActivePlan">You don't have any active plans. Why not <a ui-sref="plansNew({ id: plansIndex.all.id })">create one now</a>.</p>
     <ul dnd-list>
       <li ng-repeat="plan in plansIndex.all.user_plans" ng-if="plan.active">
         <a ui-sref="plansShow({id: plan.id })">
@@ -18,25 +18,24 @@
           <img src="../images/arrow-right.png" class="right-arrow">
         </a>
       </li>
-      <li>
-        <a ui-sref="plansNew({ id: plansIndex.all.id })">
-          Create New Plan
-          <img src="../images/arrow-right.png" class="right-arrow">
-        </a>
-      </li>
     </ul>
   </div>
+  <button class="secondary center" ui-sref="plansNew({ id: plansIndex.all.id })">
+    Create New Plan
+  </button>
   <div ng-if="plansIndex.all.user_plans">
-    <div class="container">
+    <div class="container center">
       <h1>Past Plans</h1>
     </div>
     <ul dnd-list>
       <li ng-repeat="plan in plansIndex.all.user_plans" ng-if="!plan.active">
-        <a ui-sref="plansShow({id: plan.id })">
-          <h3>{{ plan.name }}</h3>
-          <p>{{ plan.end_date }}</p>
-          <img src="../images/arrow-right.png" class="right-arrow">
-        </a>
+        <div class="container">
+          <a ui-sref="plansShow({id: plan.id })">
+            <h3>{{ plan.name }}</h3>
+            <p>Race day: {{ plan.end_date | date: dd }}</p>
+            <img src="../images/arrow-right.png" class="right-arrow">
+          </a>
+        </div>
       </li>
     </ul>
   </div>

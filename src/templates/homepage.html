@@ -1,22 +1,14 @@
 <section class="homepage">
   <h1>RUN <sup>+</sup></h1>
   <div ng-if="!main.isLoggedIn()">
-    <ul dnd-list>
-      <li>
-        <a ui-sref="register">Create account</a>
-      </li>
-      <li>
-        <a ui-sref="login">Sign in</a>
-      </li>
-    </ul>
+    <button class="secondary" ui-sref="register">Create account</a>
+    <button class="primary" ui-sref="login">Sign in</button>
   </div>
   <div ng-if="main.isLoggedIn()">
-    <ul dnd-list>
-      <li ng-if="!!main.activePlan"><a ui-sref="daysShow({planId: main.activePlan, dayId: main.dayId })">Today</a>
-      </li>
-      <li>
-        <a ui-sref="plansIndex">Plans</a>
-      </li>
-    </ul>
+    <button class="secondary" ng-if="!!main.activePlan"><a ui-sref="daysShow({planId: main.activePlan, dayId: main.dayId })">Today</a>
+    </button>
+    <button class="primary">
+      <a ui-sref="plansIndex">Plans</a>
+    </button>
   </div>
 </section>
