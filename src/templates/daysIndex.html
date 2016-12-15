@@ -1,14 +1,15 @@
 <section>
-  <header>
-    <ul>
-      <li>
-        <a ui-sref="plansShow({ id: daysIndex.plan.id})">
-          <img src="../images/arrow-left.png" class="left-arrow">
-        </a>
-      </li>
-      <li>{{ daysIndex.plan.name }}</li>
-    </ul>
+  <header class="top-nav">
+    <div class="container">
+      <ul>
+        <li>
+          <a ui-sref="plansShow({ id: daysIndex.plan.id})">
+            <img src="../images/arrow-left.png" class="left-arrow">
+          </a>
+        </li>
+        <li>full plan</li>
+      </ul>
+    </div>
   </header>
-  <h1>Plan Daily Breakdown</h1>
   <days-list days="daysIndex.plan.user_days" plan="daysIndex.plan.id" ng-if="daysIndex.plan.user_days"></days-list>
 </section>

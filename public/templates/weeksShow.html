@@ -1,21 +1,29 @@
 <section>
-  <header>
-    <ul>
-      <li>
-        <a ui-sref="plansShow({ id: weeksShow.planId})">
-          <img src="../images/arrow-left.png" class="left-arrow">
-        </a>
-      </li>
-      <li>WEEK {{ weeksShow.weekId }}</li>
-      <li><a ui-sref="weeksEdit({ planId: weeksShow.planId, weekId: weeksShow.weekId})">EDIT</a></li>
-    </ul>
+  <header class="top-nav">
+    <div class="container">
+      <ul>
+        <li>
+          <a ui-sref="plansShow({ id: weeksShow.planId})">
+            <img src="../images/arrow-left.png" class="left-arrow">
+          </a>
+        </li>
+        <li>week {{ weeksShow.weekId }}</li>
+        <li><a ui-sref="weeksEdit({ planId: weeksShow.planId, weekId: weeksShow.weekId})">edit</a></li>
+      </ul>
+    </div>
   </header>
-  <h1>Week Show</h1>
-  <div>
-    <ul>
-      <li>{{ weeksShow.completedWorkouts }} / {{ weeksShow.totalWorkouts }} workouts</li>
-      <li>{{ weeksShow.completedMiles }} / {{ weeksShow.totalMiles }} miles</li>
-    </ul>
+  <div class="container">
+    <div class="plan-stats">
+      <div class="stats-left">
+        <span class="number"><sup>{{ weeksShow.completedWorkouts }}</sup>/<sub>{{ weeksShow.totalWorkouts }}</sub></span>
+        <span class="text">workouts</span>
+      </div>
+
+      <div class="stats-right">
+        <span class="number"><sup>{{ weeksShow.completedMiles }}</sup>/<sub>{{ weeksShow.totalMiles }}</sub></span>
+        <span class="text">miles</span>
+      </div>
+    </div>
   </div>
 
   <days-list days="weeksShow.thisWeek" plan="weeksShow.planId" ng-if="weeksShow.thisWeek"></days-list>

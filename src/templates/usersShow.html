@@ -1,6 +1,10 @@
 <section>
-  <h1>Users Show</h1>
-  <h2>{{ usersShow.user.username }}</h2>
+  <header class="top-nav">
+    <div class="container">
+      <h2>{{ usersShow.user.username }}</h2>
+    </div>
+  </header>
+  <img ng-src="{{ usersShow.user.image }}">
   <button ui-sref="usersEdit({ id: usersShow.user.id })">Edit</button>
 
   <h4>{{ usersShow.user.email }}</h4>

@@ -1,13 +1,15 @@
 <section>
-  <header>
-    <ul>
-      <li>
-        <a ui-sref="plansShow({ id: stravaIndex.planId})">
-          <img src="../images/arrow-left.png" class="left-arrow">
-        </a>
-      </li>
-      <li>ACTIVITY FEED</li>
-    </ul>
+  <header class="top-nav">
+    <div class="container">
+      <ul>
+        <li>
+          <a ui-sref="plansShow({ id: stravaIndex.planId})">
+            <img src="../images/arrow-left.png" class="left-arrow">
+          </a>
+        </li>
+        <li>ACTIVITY FEED</li>
+      </ul>
+    </div>
   </header>
   <button ng-click="stravaIndex.sync()">SYNC WITH STRAVA</button>
   <ul>

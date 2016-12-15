@@ -1,14 +1,28 @@
-<section id="top">
-  <div>
+<header class="top-nav">
+  <div class="container">
+    <h1 class="brand">Run <sup>+</sup></h1>
+  </div>
+</header>
+
+<section>
+  <div class="container">
     <h1>{{ plansShow.plan.name }}</h1>
     <h2>{{ plansShow.plan.end_date | date: dd }}</h2>
+
+    <div class="plan-stats">
+      <div class="stats-left">
+        <span class="number"><sup>{{ plansShow.completedWorkouts }}</sup>/<sub>{{ plansShow.totalWorkouts }}</sub></span>
+        <span class="text">workouts</span>
+      </div>
+
+      <div class="stats-right">
+        <span class="number"><sup>{{ plansShow.completedMiles }}</sup>/<sub>{{ plansShow.totalMiles }}</sub></span>
+        <span class="text">miles</span>
+      </div>
+    </div>
+
   </div>
-  <div>
-    <ul>
-      <li>{{ plansShow.completedWorkouts }} / {{ plansShow.totalWorkouts }} workouts</li>
-      <li>{{ plansShow.completedMiles }} / {{ plansShow.totalMiles }} miles</li>
-    </ul>
-  </div>
+
   <div>
     <ul dnd-list>
       <li ng-if="plansShow.plan.active && plansShow.plan.status === 'current' && plansShow.currentWeek">
@@ -42,11 +56,13 @@
       </li>
     </ul>
   </div>
-  <div>
+
+  <div class="container">
     <canvas id="bar" class="chart chart-bar"
       chart-data="plansShow.data" chart-labels="plansShow.labels" chart-series="plansShow.series" chart-colors="plansShow.colors">
     </canvas>
   </div>
+
   <div>
     <ul dnd-list>
       <li>

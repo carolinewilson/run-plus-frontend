@@ -1,20 +1,22 @@
 <section>
-  <header>
-    <ul>
-      <li>
-        <a ui-sref="plansShow({id: plansEdit.plan.id})">
-          <img src="../images/arrow-left.png" class="left-arrow">
-        </a>
-      </li>
-      <li>{{ plansEdit.plan.name }}</li>
-    </ul>
+  <header class="top-nav">
+    <div class="container">
+      <ul>
+        <li>
+          <a ui-sref="plansShow({id: plansEdit.plan.id})">
+            <img src="../images/arrow-left.png" class="left-arrow">
+          </a>
+        </li>
+        <li>{{ plansEdit.plan.name }}</li>
+      </ul>
+    </div>
   </header>
-  <div class="">
+  <div class="container">
     <h1 ng-if="plansEdit.plan.active">Are you sure you want to end this plan?</h1>
     <h1 ng-if="!plansEdit.plan.active">Are you sure you want to permanently delete this plan?</h1>
     <p><em>There's no undo.</em></p>
-    <button ng-if="plansEdit.plan.active" ng-click="plansEdit.endPlan()">End</button>
-    <button ng-if="!plansEdit.plan.active" ng-click="plansEdit.deletePlan()">Delete</button>
-    <button ui-sref="plansShow({id: plansEdit.plan.id})">Back</button>
+    <button ng-if="plansEdit.plan.active" ng-click="plansEdit.endPlan()">Yes, end</button>
+    <button ng-if="!plansEdit.plan.active" ng-click="plansEdit.deletePlan()">Yes, delete</button>
+    <button ui-sref="plansShow({id: plansEdit.plan.id})">No, take me back</button>
   </div>
 </section>

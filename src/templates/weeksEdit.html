@@ -1,16 +1,17 @@
 <section>
-  <header>
-    <ul>
-      <li>
-        <a ng-click="weeksEdit.savePlan()" ui-sref="weeksShow({planId: weeksEdit.planId, weekId: weeksEdit.weekId})">
-          <img src="../images/arrow-left.png" class="left-arrow">
-        </a>
-      </li>
-      <li>WEEK {{ weeksEdit.weekId }}</li>
-      <li><a ng-click="weeksEdit.savePlan()" ui-sref="weeksShow({planId: weeksEdit.planId, weekId: weeksEdit.weekId})">DONE</a></li>
-    </ul>
+  <header class="top-nav">
+    <div class="container">
+      <ul>
+        <li>
+          <a ng-click="weeksEdit.savePlan()" ui-sref="weeksShow({planId: weeksEdit.planId, weekId: weeksEdit.weekId})">
+            <img src="../images/arrow-left.png" class="left-arrow">
+          </a>
+        </li>
+        <li>WEEK {{ weeksEdit.weekId }}</li>
+        <li><a ng-click="weeksEdit.savePlan()" ui-sref="weeksShow({planId: weeksEdit.planId, weekId: weeksEdit.weekId})">SAVE</a></li>
+      </ul>
+    </div>
   </header>
-  <h1>Week Edit</h1>
   <ul dnd-list="weeksEdit.thisWeek">
     <li ng-repeat="day in weeksEdit.thisWeek" dnd-draggable="day" dnd-moved="weeksEdit.updatePosition($index)"
     dnd-effect-allowed="move"

@@ -9,9 +9,6 @@ function daysList() {
     scope: {
       days: '=',
       plan: '='
-    // },
-    // link: function($scope) {
-      // console.log($scope);
     }
   };
 }

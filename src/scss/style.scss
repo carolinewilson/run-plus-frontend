@@ -1,26 +1,121 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
 body {
-  margin-bottom: 80px;
   top: 0;
   background-color: white;
   color: FireBrick;
+  font-family: 'Poppins', sans-serif;
 
+  .left-arrow, .right-arrow, .edit {
+    width: 40px;
+  }
+  header.top-nav {
+    height: 60px;
+    background-color: #f3f3f3;
+    position: fixed;
+    z-index: 1;
+    top:0;
+    width: 100%;
+
+    h1, h2 {
+      text-align: center;
+      transform: translateY(70%);
+      text-transform: uppercase;
+
+      &.brand {
+        margin: 0;
+        padding: 0;
+        transform: translateY(6%);
+      }
+    }
+    ul {
+      width: 100%;
+      height: 60px;
+      position: relative;
+      margin: 0;
+      text-transform: uppercase;
+      font-size: 20px;
+
+      li {
+        &:nth-child(2) {
+          position: absolute;
+          right: 50%;
+          width: 70%;
+          text-align: center;
+          transform: translate(50%,50%);
+          margin: 0;
+        }
+        &:nth-child(3) {
+          position: absolute;
+          right: 0;
+          width: 30%;
+          text-align: right;
+          transform: translate(0%,50%);
+          margin: 0;
+        }
+      }
+    }
+  }
   section {
     background-color: white;
+    position: absolute;
+    top: 80px;
+    width: 100%;
+    margin-bottom: 51px;
+
+    h1 {
+      font-size: 30px;
+    }
+    h2 {
+      font-size: 20px;
+    }
+    h3 {
+      font-size: 18px;
+    }
+
+    .plan-stats {
+      background-color: #f3f3f3;
+      margin: 20px 0;
+
+      .stats-left {
+        border-right: 1px solid white;
+      }
+      .stats-left, .stats-right {
+        display: inline-block;
+        width: 49%;
+        margin: 0 auto;
+        text-align: center;
+
+        span.number {
+          font-size: 60px;
+        }
+        span.text {
+          display: block;
+          text-transform: uppercase;
+          margin-bottom: 10px;
+        }
+      }
+    }
+
+    .chart {
+      margin-top: 30px;
+    }
+
   }
+
+
   ul {
     list-style: none;
     li {
       display: inline;
       margin: 0 20px;
 
-      .edit, .right-arrow{
-        width: 50px;
+      .edit, .right-arrow {
         position: absolute;
         top: 20%;
         right: 30px;
       }
-      .left-arrow{
-        width: 40px;
+      .left-arrow {
         position: absolute;
         top: 10px;
         left: 10px;
@@ -45,7 +140,7 @@ body {
     width: 100%;
     text-align: center;
     background-color: white;
-    box-shadow: 0 3px 7px 5px lightgrey;
+    box-shadow: 0 3px 7px 5px #f3f3f3;
     text-transform: uppercase;
     ul {
       margin: 10px 0;
@@ -62,12 +157,12 @@ body {
     overflow: hidden;
   }
   .complete {
-    // background-color: lightgrey;
+    // background-color: #f3f3f3;
     color: red;
   }
 
   .disabled {
-    background-color: lightgrey;
+    background-color: #f3f3f3;
   }
 
   .homepage {
@@ -81,69 +176,78 @@ body {
     color: white;
     text-transform: uppercase;
   }
-}
 
-// ---------- Drag & Dop Styling ---------- //
-/**
-* For the correct positioning of the placeholder element, the dnd-list and
-* it's children must have position: relative
-*/
-ul[dnd-list],
-ul[dnd-list] > li {
-  position: relative;
-}
+  // ---------- Drag & Dop Styling ---------- //
+  /**
+  * For the correct positioning of the placeholder element, the dnd-list and
+  * it's children must have position: relative
+  */
+  ul[dnd-list],
+  ul[dnd-list] > li {
+    position: relative;
+  }
 
-/**
-* The dnd-list should always have a min-height,
-* otherwise you can't drop to it once it's empty
-*/
-ul[dnd-list] {
-  min-height: 42px;
-  padding-left: 0px;
-}
+  /**
+  * The dnd-list should always have a min-height,
+  * otherwise you can't drop to it once it's empty
+  */
+  ul[dnd-list] {
+    min-height: 42px;
+    padding-left: 0px;
+    background-color: red;
+    margin: 0;
+  }
 
-/**
-* The dndDraggingSource class will be applied to
-* the source element of a drag operation. It makes
-* sense to hide it to give the user the feeling
-* that he's actually moving it.
-*/
-ul[dnd-list] .dndDraggingSource {
-  display: none;
-}
+  /**
+  * The dndDraggingSource class will be applied to
+  * the source element of a drag operation. It makes
+  * sense to hide it to give the user the feeling
+  * that he's actually moving it.
+  */
+  ul[dnd-list] .dndDraggingSource {
+    display: none;
+  }
 
-/**
-* An element with .dndPlaceholder class will be
-* added to the dnd-list while the user is dragging
-* over it.
-*/
-ul[dnd-list] .dndPlaceholder {
-  display: block;
-  background-color: #ddd;
-  min-height: 42px;
-}
+  /**
+  * An element with .dndPlaceholder class will be
+  * added to the dnd-list while the user is dragging
+  * over it.
+  */
+  ul[dnd-list] .dndPlaceholder {
+    display: block;
+    background-color: #ddd;
+    min-height: 42px;
+  }
 
-/**
-* The dnd-lists's child elements currently MUST have
-* position: relative. Otherwise we can not determine
-* whether the mouse pointer is in the upper or lower
-* half of the element we are dragging over. In other
-* browsers we can use event.offsetY for this.
-*/
-ul[dnd-list] li {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-top-right-radius: 4px;
-  border-top-left-radius: 4px;
-  display: block;
-  padding: 10px 15px;
-  margin-bottom: -1px;
-}
+  /**
+  * The dnd-lists's child elements currently MUST have
+  * position: relative. Otherwise we can not determine
+  * whether the mouse pointer is in the upper or lower
+  * half of the element we are dragging over. In other
+  * browsers we can use event.offsetY for this.
+  */
+  ul[dnd-list] li {
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    display: block;
+    padding: 15px 15px;
+    margin: 0;
+    margin-bottom: -1px;
 
-/**
-* Show selected elements in green
-*/
-ul[dnd-list] li.selected {
-  background-color: #dff0d8;
-  color: #3c763d;
+    a {
+      h3 {
+        transform: translateY(50%);
+      }
+    }
+  }
+
+  /**
+  * Show selected elements in green
+  */
+  ul[dnd-list] li.selected {
+    background-color: #dff0d8;
+    color: #3c763d;
+  }
+
 }
