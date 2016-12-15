@@ -7,7 +7,7 @@
             <img src="../images/arrow-left.png" class="left-arrow">
           </a>
         </li>
-        <li>week {{ weeksShow.weekId }}</li>
+        <li><a>week {{ weeksShow.weekId }}</a></li>
         <li><a ui-sref="weeksEdit({ planId: weeksShow.planId, weekId: weeksShow.weekId})">edit</a></li>
       </ul>
     </div>
@@ -25,6 +25,6 @@
       </div>
     </div>
   </div>
- 
+
   <days-list days="weeksShow.thisWeek" plan="weeksShow.planId" ng-if="weeksShow.thisWeek"></days-list>
 </section>

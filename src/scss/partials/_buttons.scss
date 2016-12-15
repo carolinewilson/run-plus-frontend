@@ -3,14 +3,14 @@ button {
   height: 60px;
   font-family: $brand-font;
   &.primary {
-    background-color: $brand-red;
+    background-color: $brand-purple;
     color: white;
-    border: 1px solid $brand-red;
+    border: 1px solid $brand-purple;
   }
   &.secondary {
     background-color: white;
-    color: $brand-red;
-    border: 1px solid $brand-red;
+    color: $brand-purple;
+    border: 1px solid $brand-purple;
   }
   &.center {
     margin: 50px 0;

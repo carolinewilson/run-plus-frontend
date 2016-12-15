@@ -20,7 +20,7 @@
       <h2>{{ daysShow.day.exercise.name }}</h2>
       <p>{{ daysShow.day.exercise.description }}</p>
       <h1><span class="number">{{ daysShow.day.exercise.miles }} mi</span></h1>
-      <button class="primary wide" ng-if="daysShow.day.completed" disabled="true" class="disabled">Already Completed</button>
+      <button class="primary wide" ng-if="daysShow.day.completed" disabled="true" class="disabled">Complete!</button>
       <button class="primary wide" ng-if="!daysShow.day.completed" ng-click="daysShow.markDone()">Mark as Completed</button>
     </div>
     <div ng-if="daysShow.stravaData">
