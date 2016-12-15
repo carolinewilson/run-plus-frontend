@@ -1,8 +1,7 @@
 <ul dnd-list>
   <li ng-repeat="day in days | orderBy: 'position'" ng-class="{ 'complete' : day.completed }" >
-    <p>{{ day.date | date: dd }}</p>
-    <a ui-sref="daysShow({planId: plan, dayId: day.id, stravaId: day.strava_id})" ng-if="day.exercise.name">{{ day.exercise.name }}</a>
-    <a ng-if="!day.exercise.name">Rest day</a>
+    <a ui-sref="daysShow({planId: plan, dayId: day.id, stravaId: day.strava_id})" ng-if="day.exercise.name"><h3>{{ day.dayOfWeek }}<span class="divider"><span class="activity">{{ day.exercise.name }}</span></span></h3></a>
+    <a ng-if="!day.exercise.name"><h3>{{ day.dayOfWeek }}<span class="divider"><span class="activity">Rest day</span></span></h3></a>
     <a ui-sref="daysShow({planId: plan, dayId: day.id, stravaId: day.strava_id})" ng-if="day.exercise.name"><img ng-if="day.exercise.name" src="../images/arrow-right.png" class="right-arrow"></a>
   </li>
 </ul>

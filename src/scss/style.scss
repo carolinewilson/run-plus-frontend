@@ -9,6 +9,15 @@ body {
   .left-arrow, .right-arrow, .edit {
     width: 40px;
   }
+  h1 {
+    font-size: 30px;
+  }
+  h2 {
+    font-size: 20px;
+  }
+  h3 {
+    font-size: 18px;
+  }
   header.top-nav {
     height: 60px;
     background-color: #f3f3f3;
@@ -61,17 +70,8 @@ body {
     position: absolute;
     top: 80px;
     width: 100%;
-    margin-bottom: 51px;
+    margin-bottom: 61px;
 
-    h1 {
-      font-size: 30px;
-    }
-    h2 {
-      font-size: 20px;
-    }
-    h3 {
-      font-size: 18px;
-    }
 
     .plan-stats {
       background-color: #f3f3f3;
@@ -99,6 +99,15 @@ body {
 
     .chart {
       margin-top: 30px;
+    }
+
+    .divider {
+      position: absolute;
+      left: 30px;
+      border-left: 1px solid black;
+      .activity {
+        margin-left: 15px;
+      }
     }
 
   }
@@ -133,17 +142,23 @@ body {
     color: black;
   }
 
-  nav {
+  footer {
     position: fixed;
     bottom: 0;
-    height: 50px;
     width: 100%;
-    text-align: center;
-    background-color: white;
-    box-shadow: 0 3px 7px 5px #f3f3f3;
-    text-transform: uppercase;
+    height: 60px;
+    background-color: #f3f3f3;
     ul {
-      margin: 10px 0;
+      list-style: none;
+      margin: 0 auto;
+      li {
+        display: inline-block;
+        h2 {
+          text-align: center;
+          transform: translateY(75%);
+          text-transform: uppercase;
+        }
+      }
     }
   }
 
@@ -194,7 +209,6 @@ body {
   ul[dnd-list] {
     min-height: 42px;
     padding-left: 0px;
-    background-color: red;
     margin: 0;
   }
 

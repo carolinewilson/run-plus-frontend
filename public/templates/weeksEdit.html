@@ -17,9 +17,8 @@
     dnd-effect-allowed="move"
     dnd-selected="weeksEdit.selected = day"
     ng-class="{'selected': weeksEdit.selected === day}">
-      <p>{{ day.date | date: dd }}</p>
-      <a ui-sref="daysShow({planId: weeksEdit.planId, dayId: day.id})" ng-if="day.exercise.name">{{ day.exercise.name }}</a>
-      <a ng-if="!day.exercise.name">Rest day</a>
+      <a ui-sref="daysShow({planId: weeksEdit.planId, dayId: day.id})" ng-if="day.exercise.name"><h3>{{ day.dayOfWeek }}<span class="divider"><span class="activity">{{ day.exercise.name }}</span></span></h3></a>
+      <a ng-if="!day.exercise.name"><h3>{{ day.dayOfWeek }}<span class="divider"><span class="activity">Rest day</span></span></h3></a>
       <img src="../images/nav.png" class="edit" >
     </li>
   </ul>
