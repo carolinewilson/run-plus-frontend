@@ -1,5 +1,5 @@
 angular.module('finalProject', ['ngResource', 'ui.router', 'satellizer','chart.js','dndLists','ngMessages','ngMaterial'])
-  .constant('API_URL', window.location.hostname === 'localhost' ? 'http://localhost:3000' : '//final-project-api.herokuapp.com')
+  .constant('API_URL', window.location.hostname === 'localhost' ? 'http://localhost:3000/api' : '//final-project-api.herokuapp.com')
   .config(Auth);
 
 Auth.$inject = ['$authProvider', 'API_URL'];

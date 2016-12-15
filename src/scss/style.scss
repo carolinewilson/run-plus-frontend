@@ -80,47 +80,60 @@ body {
     margin-bottom: 61px;
 
 
-    .plan-stats {
-      background-color: #f3f3f3;
-      margin: 20px 0;
-
-      .stats-left {
-        border-right: 1px solid white;
+    .formPage {
+      input, button {
+        width: 100%;
+        border-radius: 0;
+        height: 60px;
+        font-family: 'Poppins', sans-serif;
       }
-      .stats-left, .stats-right {
-        display: inline-block;
-        width: 49%;
-        margin: 0 auto;
-        text-align: center;
+
+      button {
+        background-color: FireBrick;
+        color: white;
       }
     }
-    span.number {
-      font-size: 60px;
-    }
-    span.text {
-      display: block;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-    .chart {
-      margin-top: 30px;
-    }
+  }
 
-    .day {
+  .plan-stats {
+    background-color: #f3f3f3;
+    margin: 20px 0;
+
+    .stats-left {
+      border-right: 1px solid white;
+    }
+    .stats-left, .stats-right {
+      display: inline-block;
+      width: 49%;
+      margin: 0 auto;
       text-align: center;
-      button a {
-        background-color: red;
-      }
     }
-    .divider {
-      position: absolute;
-      left: 30px;
-      border-left: 1px solid black;
-      .activity {
-        margin-left: 15px;
-      }
-    }
+  }
+  span.number {
+    font-size: 60px;
+  }
+  span.text {
+    display: block;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .chart {
+    margin-top: 30px;
+  }
 
+  .day {
+    text-align: center;
+    button a {
+      background-color: red;
+    }
+  }
+  .divider {
+    position: absolute;
+    left: 30px;
+    border-left: 1px solid black;
+    .activity {
+      margin-left: 15px;
+    }
   }
 
   ul {
@@ -203,7 +216,7 @@ body {
       width: 100%;
     }
   }
-
+}
   // ---------- Drag & Dop Styling ---------- //
   /**
   * For the correct positioning of the placeholder element, the dnd-list and
@@ -275,5 +288,3 @@ body {
     background-color: #dff0d8;
     color: #3c763d;
   }
-
-}
