@@ -47,11 +47,8 @@ function StravaIndexController($http, StravaService, $auth, User, UserPlan, Day,
       const completedDays = stravaIndex.userDays.filter((day) => {
         return day.completed;
       });
-
-      console.log(completedDays);
       // stravaIndex.allActivities.concat(completedDays);
       stravaIndex.allActivities.push(completedDays[0]);
-      console.log(stravaIndex.allActivities);
 
 
     })
@@ -61,8 +58,8 @@ function StravaIndexController($http, StravaService, $auth, User, UserPlan, Day,
   }
 
   function markComplete(planId, dayId, stravaId) {
-    Day.update({id: dayId}, { strava_id: stravaIndex, completed: true}, () => {
-      $state.go('daysShow', {planId: planId, dayId: dayId, stravaId: stravaId});
+    Day.update({id: planId.dayId}, { strava_id: planId.stravaId, completed: true   }, () => {
+      $state.go('daysShow', {planId: planId.planId, dayId: planId.dayId, stravaId: planId.stravaId});
     });
   }
 

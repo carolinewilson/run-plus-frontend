@@ -1,8 +1,12 @@
 body {
   margin-bottom: 80px;
   top: 0;
-  background-color: FireBrick;
-  color: white;
+  background-color: white;
+  color: FireBrick;
+
+  section {
+    background-color: white;
+  }
   ul {
     list-style: none;
     li {
@@ -58,7 +62,7 @@ body {
     overflow: hidden;
   }
   .complete {
-    background-color: lightgrey;
+    // background-color: lightgrey;
     color: red;
   }
 
