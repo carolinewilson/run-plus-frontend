@@ -46,7 +46,7 @@
           <li><h3>Race distance: {{ setupPlan.length }}</h3></li>
           <li><h3>Level: {{ setupPlan.level }}</h3></li>
           <li><h3>Race date: {{ setupPlan.end_date | date: "dd MMM yyyy" }}</h3></li>
-          <li><h3>Race name: {{ setupPlan.name }}</h3></li>
+          <li ng-if="setupPlan.name"><h3>Race name: {{ setupPlan.name }}</h3></li>
         </ul>
         <button class="primary wide">Build my plan</button>
       </div>

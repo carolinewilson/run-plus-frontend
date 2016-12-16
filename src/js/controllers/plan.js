@@ -33,7 +33,7 @@ function PlansShowController(UserPlan, $state, $window) {
     plansShow.series = ['Target', 'Actual'];
     plansShow.targetData = [];
     plansShow.actualData =[];
-    plansShow.colors = ['#791E94', '#ff6384'];
+    plansShow.colors = ['#28C2FF','#791E94'];
     const today =  moment().format('YYYY-MM-DD');
     const start = moment(plansShow.plan.start_date).format('YYYY-MM-DD');
     const end = moment(plansShow.plan.end_date).format('YYYY-MM-DD');
