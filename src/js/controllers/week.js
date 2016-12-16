@@ -58,7 +58,7 @@ function WeeksShowController(UserPlan, $state, $window) {
         }
       }
     });
-    console.log(weeksShow.thisWeek);
+    
     weeksShow.totalMiles = Math.floor(weeksShow.totalMiles);
     weeksShow.completedMiles = Math.floor(weeksShow.completedMiles);
 

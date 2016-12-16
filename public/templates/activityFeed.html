@@ -13,8 +13,12 @@
   </header>
   <div class="container">
     <button class="primary wide" ng-click="stravaIndex.sync()">SYNC WITH STRAVA</button>
+
     <ul>
       <li ng-repeat="activity in stravaIndex.allActivities | orderBy: 'date'">
+        <div ng-if="!activity.exercise && !activity.name">
+          <p>You've not completed any run yet. Get your shoes on!</p>
+        </div>
         <div ng-if="activity.exercise"  class="box">
           <h1>{{activity.date | date: dd}}</h1>
           <p>{{activity.exercise.name}}</p>

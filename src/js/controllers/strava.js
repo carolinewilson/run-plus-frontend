@@ -47,8 +47,11 @@ function StravaIndexController($http, StravaService, $auth, User, UserPlan, Day,
       const completedDays = stravaIndex.userDays.filter((day) => {
         return day.completed;
       });
-      // stravaIndex.allActivities.concat(completedDays);
-      stravaIndex.allActivities.push(completedDays[0]);
+
+      completedDays.forEach((day) => {
+        stravaIndex.allActivities.push(day);
+      });
+      
 
 
     })
