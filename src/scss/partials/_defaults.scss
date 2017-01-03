@@ -88,3 +88,9 @@ input[type=radio] {
   position: relative;
   transform: translate(-44%,45%);
 }
+
+@media (max-width: 500px) {
+  .filler {
+    height: 60px;
+  }
+}
