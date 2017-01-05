@@ -14,7 +14,7 @@ With Run +, users select their race distance, fitness level and race date and ar
 
 To add an extra layer of convenience to this, I wanted to integrate the app with a third party tracking platform to automatically import users workouts. As I run with a Garmin watch the Strava API provided a wonderful solution to this. 
 
-Users must first authenticate with Strava to allow asses to their data, then with the click of a button, all users workouts are imported to the app and available to view in the activity feed.   
+Users must first authenticate with Strava to allow access to their data, then with the click of a button, all users workouts are imported to the app and available to view in the activity feed.   
 
 ![Run + Activity Feed](https://run-plus.herokuapp.com/images/run-plus-feed.png)
 
