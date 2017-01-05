@@ -3,12 +3,12 @@
     <div class="container">
       <ul>
         <li>
-          <a ng-click="weeksEdit.savePlan()" ui-sref="weeksShow({planId: weeksEdit.planId, weekId: weeksEdit.weekId})">
+          <a ui-sref="weeksShow({planId: weeksEdit.planId, weekId: weeksEdit.weekId})">
             <img src="../images/arrow-left.png" class="left-arrow">
           </a>
         </li>
-        <li><a>WEEK {{ weeksEdit.weekId }}</a></li>
-        <li><a ng-click="weeksEdit.savePlan()" ui-sref="weeksShow({planId: weeksEdit.planId, weekId: weeksEdit.weekId})">SAVE</a></li>
+        <li><h2><a>WEEK {{ weeksEdit.weekId }}</a></h2></li>
+        <li><h2><a ng-click="weeksEdit.savePlan()" ui-sref="weeksShow({planId: weeksEdit.planId, weekId: weeksEdit.weekId})">SAVE</a></h2></li>
       </ul>
     </div>
   </header>

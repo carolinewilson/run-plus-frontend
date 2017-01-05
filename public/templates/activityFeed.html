@@ -7,7 +7,7 @@
             <img src="../images/arrow-left.png" class="left-arrow">
           </a>
         </li>
-        <li>ACTIVITY FEED</li>
+        <li><h2>ACTIVITY FEED</h2></li>
       </ul>
     </div>
   </header>
@@ -37,8 +37,8 @@
             <p class="stats-left">{{ activity.distance }} mi</p>
             <p class="stats-right">{{ activity.elapsed_hours }}:{{ activity.elapsed_minutes }}:{{ activity.elapsed_seconds}}</p>
           </div>
-          <button class="secondary center" ng-if="activity.userDay.strava_id" ui-sref="daysShow({planId: stravaIndex.planId, dayId: activity.userDay.id, stravaId: activity.userDay.strava_id})">View Run</button>
-          <button class="primary center" ng-if="activity.userDay.exercise && !activity.userDay.strava_id" ng-click="stravaIndex.markComplete({planId: stravaIndex.planId, dayId: activity.userDay.id, stravaId: activity.id})">Mark completed</button>
+          <button class="secondary center narrow" ng-if="activity.userDay.strava_id" ui-sref="daysShow({planId: stravaIndex.planId, dayId: activity.userDay.id, stravaId: activity.userDay.strava_id})">View Run</button>
+          <button class="primary center narrow" ng-if="activity.userDay.exercise && !activity.userDay.strava_id" ng-click="stravaIndex.markComplete({planId: stravaIndex.planId, dayId: activity.userDay.id, stravaId: activity.id})">Mark completed</button>
           <div ng-if="activity.map.summary_polyline" class="map-summary">
             <google-map class="small" ng-if="activity.map.summary_polyline" data="activity.map.summary_polyline" ></google-map>
           </div>

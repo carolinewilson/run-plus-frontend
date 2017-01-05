@@ -12,11 +12,13 @@
     </div>
     <ul dnd-list>
       <li ng-repeat="plan in plansIndex.all.user_plans" ng-if="plan.active">
-        <a ui-sref="plansShow({id: plan.id })">
-          <h3>{{ plan.name }}</h3>
-          <p>Race day: {{ plan.end_date | date: dd}}</p>
-          <img src="../images/arrow-right.png" class="right-arrow">
-        </a>
+        <div class="container">
+          <a ui-sref="plansShow({id: plan.id })">
+            <h3>{{ plan.name }}</h3>
+            <p>Race day: {{ plan.end_date | date: dd}}</p>
+            <img src="../images/arrow-right.png" class="right-arrow">
+          </a>
+        </div>
       </li>
     </ul>
   </div>
