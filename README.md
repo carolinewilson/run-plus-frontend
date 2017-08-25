@@ -14,7 +14,7 @@ A demo account can be accessed with the credentials:
 ## The Idea
 I wanted to build an app that would allow me to generate a training plan for an event date that I'm able to customise based on my weekly commitments, and to monitor my progress against targets over the course of the plan.
 
-As a runner myself, I've always found it difficult to find training plans that are customisible &amp; trackable. I've resorted to copying workouts to a calendar and modifying based on my commitments, making it hard to monitor progress.
+As a runner myself, I've always found it difficult to find training plans that are customisable &amp; trackable. I've resorted to copying workouts to a calendar and modifying based on my commitments, making it hard to monitor progress.
 
 With Run +, users select their race distance, fitness level and race date and are provided with a suitable training plan. Workouts each week and be rearranged to suit the users wishes. User can update their progress after each completed workout to instantly update their statistics.
 
